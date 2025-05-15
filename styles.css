@@ -48,10 +48,7 @@ p,
 }
 
 /* Navbar blur */
-.navbar-blur {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
+
 
 /* Divider personalizado */
 .divider-custom {
