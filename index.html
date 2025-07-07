@@ -5,6 +5,9 @@
   <!-- Google tag (gtag.js) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Portafolio profesional de Gabriel Iturre, desarrollador full stack especializado en crear interfaces web dinámicas, intuitivas y visualmente atractivas con experiencia en Angular, TypeScript y Node.js">
   <meta name="keywords" content="desarrollo web, frontend, backend, full stack, Gabriel Iturre, HTML, CSS, JavaScript, Angular, TypeScript, Node.js">
   <meta name="author" content="Gabriel Iturre">
@@ -14,6 +17,10 @@
   <meta property="og:image" content="images/IMG_20230705_114537_019~2 (1).jpg">
   <meta property="og:url" content="https://gabrieliturre.netlify.app">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gabriel Iturre | Desarrollador Full Stack">
+  <meta name="twitter:description" content="Especializado en crear experiencias web modernas y funcionales">
+  <meta name="twitter:image" content="images/IMG_20230705_114537_019~2 (1).jpg">
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2270NT3TP"></script>
   <script>
@@ -40,40 +47,75 @@
   <div id="particles-js" class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1; opacity: 0.7;"></div>
 
   <!-- Header con Navbar -->
-  <header id="navbar" class=" py-2 px-3 px-md-5 navbar-blur">
+  <header id="navbar" class="fixed-top py-3 px-3 px-md-5 navbar-blur">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand fw-bold" href="#hero">
-          <span class="text-primary">G</span>abriel<span class="text-primary">.</span>dev
+        <!-- Logo con animación -->
+        <a class="navbar-brand fw-bold logo-animated d-flex align-items-center" href="#hero">
+          <div class="logo-container me-2">
+            <div class="logo-circle">
+              <span class="logo-initial">G</span>
+            </div>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">Gabriel</span>
+            <span class="brand-title">Full Stack Developer</span>
+          </div>
         </a>
         
-        <!-- Botón de menú móvil -->
-        <button  class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <!-- Botón de menú móvil mejorado -->
+        <button class="navbar-toggler navbar-toggler-modern border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </button>
         
-        <!-- Navegación -->
+        <!-- Navegación mejorada -->
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item">
-              <a class="nav-link px-3 nav-link-hover" href="#hero">Inicio</a>
+              <a class="nav-link nav-link-modern active" href="#hero" data-section="hero">
+                <span class="nav-text">Inicio</span>
+                <span class="nav-indicator"></span>
+              </a>
             </li>
-
             <li class="nav-item">  
-              <a class="nav-link px-3 nav-link-hover" href="#misvideos">Mis videos</a>
+              <a class="nav-link nav-link-modern" href="#misvideos" data-section="misvideos">
+                <span class="nav-text">Videos</span>
+                <span class="nav-indicator"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 nav-link-hover" href="#tecnologias">Tecnologías</a>
+              <a class="nav-link nav-link-modern" href="#tecnologias" data-section="tecnologias">
+                <span class="nav-text">Tecnologías</span>
+                <span class="nav-indicator"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 nav-link-hover" href="#proyectos">Proyectos</a>
+              <a class="nav-link nav-link-modern" href="#proyectos" data-section="proyectos">
+                <span class="nav-text">Proyectos</span>
+                <span class="nav-indicator"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 nav-link-hover" href="#educacion">Educación</a>
+              <a class="nav-link nav-link-modern" href="#educacion" data-section="educacion">
+                <span class="nav-text">Educación</span>
+                <span class="nav-indicator"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 nav-link-hover" href="#contacto">Contacto</a>
+              <a class="nav-link nav-link-modern" href="#contacto" data-section="contacto">
+                <span class="nav-text">Contacto</span>
+                <span class="nav-indicator"></span>
+              </a>
+            </li>
+            <li class="nav-item ms-3">
+              <a href="https://drive.google.com/file/d/1SISu4a9X8sJLFk8X97v670KBEY9er78K/view?usp=sharing" target="_blank" class="btn btn-primary btn-cv">
+                <i class="fas fa-download me-2"></i>
+                <span>CV</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -120,24 +162,33 @@
         <div class="col-lg-6 order-1 order-lg-2 text-center text-lg-start mb-5 mb-lg-0" data-aos="fade-left" data-aos-duration="1000">
           <div class="d-flex flex-column align-items-center align-items-lg-start">
             <div class="d-flex flex-column flex-md-row align-items-center gap-4 mb-4">
-              <div class="profile-image">
-                <img src="images/IMG_20230705_114537_019~2 (1).jpg" alt="Gabriel Iturre" class="rounded-circle img-fluid border border-4 border-primary border-opacity-50 shadow-lg" style="width: 150px; height: 150px; object-fit: cover;">
+              <div class="profile-image-container position-relative">
+                <img src="images/IMG_20230705_114537_019~2 (1).jpg" alt="Gabriel Iturre" class="profile-image rounded-circle img-fluid border border-4 border-primary border-opacity-50 shadow-lg">
+                <div class="profile-status-indicator"></div>
               </div>
               
-              <div>
-                <h1 class="display-5 fw-bold mb-2">
-                  Hola, Yo soy<br>
-                  <span class="text-primary">Gabriel <span class="text-info">Iturre</span></span>
+              <div class="text-center text-md-start">
+                <h1 class="display-4 fw-bold mb-3">
+                  Hola, soy <span class="text-primary">Gabriel</span>
                 </h1>
                 
-                <p class="fs-4 mt-2 text-info fw-medium">
-                  <span id="dynamic-text" class="typing"></span>
-                </p>
+                <div class="typing-container mb-3">
+                  <span class="typing-text fs-3 text-primary fw-semibold" id="typing-text">Desarrollador Full Stack</span>
+                  <span class="typing-cursor">|</span>
+                </div>
+                
+                <div class="expertise-badges d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Frontend</span>
+                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Backend</span>
+                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Angular</span>
+                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Express.js</span>
+                </div>
               </div>
             </div>
             
-            <p class="mt-2 text-light-emphasis">
-              Soy un entusiasta del desarrollo full stack, especializado en crear interfaces web dinámicas, intuitivas y visualmente atractivas. Mi enfoque combina diseño y funcionalidad para ofrecer soluciones efectivas que optimizan la interacción del usuario.
+            <p class="mt-2 text-light-emphasis lead">
+              Especializado en transformar ideas en soluciones digitales modernas y funcionales. 
+              Combino experiencia técnica con visión creativa para crear experiencias web excepcionales.
             </p>
             
       <!-- Redes Sociales -->
@@ -157,22 +208,36 @@
   </a>
 </div>
             
-            <!-- Email con modal -->
+            <!-- Email con funciones mejoradas -->
             <div class="mt-4 position-relative w-100">
-              <button 
-                id="emailButton"
-                class="btn btn-secondary d-flex align-items-center justify-content-center gap-2">
-                <i class="fas fa-envelope"></i> gabriel13iturre@gmail.com
-              </button>
-              
-              <!-- Modal que se muestra al hacer clic -->
-              <div id="emailModal" class="position-absolute start-0 top-100 mt-2 p-3 bg-dark border border-secondary rounded shadow-lg d-none">
-                <a href="mailto:gabriel13iturre@gmail.com" class="d-block text-primary text-decoration-none mb-2 small">
-                  <i class="fas fa-paper-plane me-2"></i> Abrir Gmail
-                </a>
-                <button onclick="copyEmail()" class="btn btn-link text-primary p-0 text-decoration-none small">
-                  <i class="fas fa-copy me-2"></i> Copiar email
+              <div class="email-container position-relative">
+                <button 
+                  id="emailButton"
+                  class="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2 position-relative email-btn"
+                  data-bs-toggle="tooltip" 
+                  data-bs-placement="top" 
+                  title="Haz clic para ver opciones de contacto">
+                  <i class="fas fa-envelope"></i> 
+                  <span class="email-text">gabriel13iturre@gmail.com</span>
+                  <i class="fas fa-copy email-copy-icon" id="copyIcon"></i>
                 </button>
+                
+                <!-- Tooltip de copiado -->
+                <div id="copyTooltip" class="copy-tooltip position-absolute">
+                  <i class="fas fa-check me-1"></i> ¡Copiado!
+                </div>
+                
+                <!-- Modal que se muestra al hacer clic -->
+                <div id="emailModal" class="position-absolute start-0 top-100 mt-2 p-3 bg-dark border border-primary border-opacity-25 rounded-3 shadow-lg d-none email-modal">
+                  <div class="d-flex flex-column gap-2">
+                    <a href="mailto:gabriel13iturre@gmail.com" class="d-flex align-items-center text-primary text-decoration-none email-option">
+                      <i class="fas fa-paper-plane me-2"></i> Abrir en Gmail
+                    </a>
+                    <button onclick="copyEmailAddress()" class="btn btn-link text-primary p-0 text-decoration-none text-start email-option">
+                      <i class="fas fa-copy me-2"></i> Copiar email
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -297,159 +362,133 @@
       <div class="divider-custom mx-auto"></div>
     </div>
 
-    <div class="bg-dark rounded-4 shadow-lg p-4 p-md-5" data-aos="fade-up">
-
-      <!-- Lenguajes -->
-      <h3 class="fs-3 fw-bold text-primary mb-4">Lenguajes</h3>
-      <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4 mb-5">
-        <!-- HTML -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="100">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="text-decoration-none">
-            <img src="images/html.png" alt="HTML" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">HTML</p>
-          </a>
+    <!-- Stack Tecnológico Principal -->
+    <div class="text-center mb-5">
+      <h3 class="fs-2 fw-bold text-primary mb-4">Stack Principal</h3>
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="tech-card-main" data-aos="flip-left" data-aos-delay="100">
+            <div class="tech-card-body">
+              <img src="images/icons8-angular-500.png" alt="Angular" class="tech-icon-main">
+              <h4 class="tech-title">Angular</h4>
+              <p class="tech-description">Framework principal para desarrollo frontend</p>
+            </div>
+          </div>
         </div>
-        <!-- CSS -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="150">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="text-decoration-none">
-            <img src="images/css-3.png" alt="CSS" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">CSS</p>
-          </a>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="tech-card-main" data-aos="flip-left" data-aos-delay="200">
+            <div class="tech-card-body">
+              <img src="images/icons8-mecanografiado-48.png" alt="TypeScript" class="tech-icon-main">
+              <h4 class="tech-title">TypeScript</h4>
+              <p class="tech-description">Lenguaje tipado para mayor robustez</p>
+            </div>
+          </div>
         </div>
-        <!-- JavaScript -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="200">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="text-decoration-none">
-            <img src="images/js.png" alt="JavaScript" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">JavaScript</p>
-          </a>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="tech-card-main" data-aos="flip-left" data-aos-delay="300">
+            <div class="tech-card-body">
+              <img src="images/icons8-expresar-js-50.png" alt="Express.js" class="tech-icon-main">
+              <h4 class="tech-title">Express.js</h4>
+              <p class="tech-description">Framework backend para APIs robustas</p>
+            </div>
+          </div>
         </div>
-        <!-- TypeScript -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="250">
-          <a href="https://www.typescriptlang.org/docs/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-mecanografiado-48.png" alt="TypeScript" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">TypeScript</p>
-          </a>
-        </div>
-      </div>
-
-      <!-- Frameworks y Librerías -->
-      <h3 class="fs-3 fw-bold text-primary mb-4">Frameworks y Librerías</h3>
-      <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4 mb-5">
-        <!-- Angular -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="100">
-          <a href="https://angular.io/docs" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-angular-500.png" alt="Angular" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Angular</p>
-          </a>
-        </div>
-        <!-- Tailwind -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="150">
-          <a href="https://tailwindcss.com/docs" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-tailwind-css-240.png" alt="Tailwind" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Tailwind</p>
-          </a>
-        </div>
-        <!-- Bootstrap -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="200">
-          <a href="https://getbootstrap.com" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-oreja-480.png" alt="Bootstrap" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Bootstrap</p>
-          </a>
-        </div>
-        <!-- Node.js -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="250">
-          <a href="https://nodejs.org/en/docs/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-nodejs-240.png" alt="NodeJs" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">NodeJs</p>
-          </a>
-        </div>
-        <!-- WordPress -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="300">
-          <a href="https://wordpress.org/support/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-wordpress-480.png" alt="WordPress" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">WordPress</p>
-          </a>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="tech-card-main" data-aos="flip-left" data-aos-delay="400">
+            <div class="tech-card-body">
+              <img src="images/icons8-mysql-96.png" alt="MySQL" class="tech-icon-main">
+              <h4 class="tech-title">MySQL</h4>
+              <p class="tech-description">Base de datos relacional confiable</p>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Bases de Datos -->
-      <h3 class="fs-3 fw-bold text-primary mb-4">Bases de Datos</h3>
-      <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4 mb-5">
-        <!-- MySQL -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="100">
-          <a href="https://dev.mysql.com/doc/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-mysql-96.png" alt="MySQL" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">MySQL</p>
-          </a>
-        </div>
-        <!-- PostgreSQL -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="150">
-          <a href="https://www.postgresql.org/docs/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-postgresql-400.png" alt="PostGreSQL" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">PostgreSQL</p>
-          </a>
+    <!-- Tecnologías Complementarias -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="tech-category-card" data-aos="fade-right">
+          <h4 class="tech-category-title">
+            <i class="fas fa-paint-brush me-2"></i> Frontend & UI
+          </h4>
+          <div class="tech-grid">
+            <div class="tech-item-modern" data-tech="HTML5">
+              <img src="images/html.png" alt="HTML5">
+              <span>HTML5</span>
+            </div>
+            <div class="tech-item-modern" data-tech="CSS3">
+              <img src="images/css-3.png" alt="CSS3">
+              <span>CSS3</span>
+            </div>
+            <div class="tech-item-modern" data-tech="JavaScript">
+              <img src="images/js.png" alt="JavaScript">
+              <span>JavaScript</span>
+            </div>
+            <div class="tech-item-modern" data-tech="Bootstrap">
+              <img src="images/icons8-oreja-480.png" alt="Bootstrap">
+              <span>Bootstrap</span>
+            </div>
+            <div class="tech-item-modern" data-tech="Tailwind">
+              <img src="images/icons8-tailwind-css-240.png" alt="Tailwind">
+              <span>Tailwind</span>
+            </div>
+            <div class="tech-item-modern" data-tech="Figma">
+              <img src="images/icons8-figura-240.png" alt="Figma">
+              <span>Figma</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- DevOps y Contenedores -->
-      <h3 class="fs-3 fw-bold text-primary mb-4">DevOps y Contenedores</h3>
-      <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4 mb-5">
-        <!-- Docker -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="100">
-          <a href="https://www.docker.com/resources/what-container" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-docker-logo-96.png" alt="Docker" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Docker</p>
-          </a>
+      
+      <div class="col-md-6">
+        <div class="tech-category-card" data-aos="fade-left">
+          <h4 class="tech-category-title">
+            <i class="fas fa-server me-2"></i> Backend & Database
+          </h4>
+          <div class="tech-grid">
+            <div class="tech-item-modern" data-tech="PostgreSQL">
+              <img src="images/icons8-postgresql-400.png" alt="PostgreSQL">
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-item-modern" data-tech="Docker">
+              <img src="images/icons8-docker-logo-96.png" alt="Docker">
+              <span>Docker</span>
+            </div>
+            <div class="tech-item-modern" data-tech="WordPress">
+              <img src="images/icons8-wordpress-480.png" alt="WordPress">
+              <span>WordPress</span>
+            </div>
+            <div class="tech-item-modern" data-tech="Postman">
+              <img src="images/icons8-postman-is-the-only-complete-api-development-environment-96.png" alt="Postman">
+              <span>Postman</span>
+            </div>
+            <div class="tech-item-modern" data-tech="Git">
+              <img src="images/icons8-git-240.png" alt="Git">
+              <span>Git</span>
+            </div>
+            <div class="tech-item-modern" data-tech="GitHub">
+              <img src="images/icons8-github-512.png" alt="GitHub">
+              <span>GitHub</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Herramientas -->
-      <h3 class="fs-3 fw-bold text-primary mb-4">Herramientas</h3>
-      <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4">
-        <!-- Git -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="100">
-          <a href="https://git-scm.com/doc" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-git-240.png" alt="Git" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Git</p>
-          </a>
+    <!-- Herramientas y Plataformas -->
+    <div class="mt-5 text-center">
+      <h4 class="fs-4 fw-bold text-primary mb-4">Herramientas y Plataformas</h4>
+      <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="zoom-in">
+        <div class="platform-badge">
+          <img src="images/icons8-netlify-externo-una-compañía-de-computación-en-la-nube-que-ofrece-hosting-y-servicios-backend-sin-servidor-para-sitios-web-estáticos-logo-shadow-tal-revivo-100.png" alt="Netlify">
+          <span>Netlify</span>
         </div>
-        <!-- GitHub -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="150">
-          <a href="https://github.com" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-github-512.png" alt="GitHub" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">GitHub</p>
-          </a>
-        </div>
-        <!-- Postman -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="200">
-          <a href="https://www.postman.com/docs/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-postman-is-the-only-complete-api-development-environment-96.png" alt="Postman" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Postman</p>
-          </a>
-        </div>
-        <!-- Figma -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="250">
-          <a href="https://www.figma.com" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-figura-240.png" alt="Figma" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Figma</p>
-          </a>
-        </div>
-        <!-- Google Analytics -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="300">
-          <a href="https://analytics.google.com/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-google-analitico-500.png" alt="Google Analytics" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Analytics</p>
-          </a>
-        </div>
-        <!-- Netlify -->
-        <div class="col tech-item" data-aos="zoom-in" data-aos-delay="350">
-          <a href="https://www.netlify.com/" target="_blank" class="text-decoration-none">
-            <img src="images/icons8-netlify-externo-una-compañía-de-computación-en-la-nube-que-ofrece-hosting-y-servicios-backend-sin-servidor-para-sitios-web-estáticos-logo-shadow-tal-revivo-100.png" alt="Netlify" class="img-fluid mx-auto d-block tech-icon">
-            <p class="mt-2 text-center text-white">Netlify</p>
-          </a>
+        <div class="platform-badge">
+          <img src="images/icons8-google-analitico-500.png" alt="Google Analytics">
+          <span>Analytics</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -521,11 +560,14 @@
               
               <!-- Botones -->
               <div class="d-flex flex-column flex-sm-row gap-2">
-                <a href="https://juegoahorcadosgabi.netlify.app/punto3" target="_blank" class="btn btn-primary flex-fill">
-                  <i class="fas fa-play me-2"></i> Jugar Ahorcados
+                <button class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                  <i class="fas fa-info-circle me-2"></i> Ver Detalles
+                </button>
+                <a href="https://juegoahorcadosgabi.netlify.app/punto3" target="_blank" class="btn btn-outline-primary flex-fill">
+                  <i class="fas fa-play me-2"></i> Demo
                 </a>
-                <a href="https://github.com/GabrielIturreCs/JuegoAhorcados" target="_blank" class="btn btn-secondary flex-fill">
-                  <i class="fab fa-github me-2"></i> Ver Repositorio
+                <a href="https://github.com/GabrielIturreCs/JuegoAhorcados" target="_blank" class="btn btn-outline-secondary flex-fill">
+                  <i class="fab fa-github me-2"></i> Código
                 </a>
               </div>
             </div>
@@ -583,11 +625,14 @@
               
               <!-- Botones -->
               <div class="d-flex flex-column flex-sm-row gap-2">
-                <a href="https://sistemagabipasajes.netlify.app/SistemaPasajes" target="_blank" class="btn btn-primary flex-fill">
-                  <i class="fas fa-globe me-2"></i> Ver Sitio Web
+                <button class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                  <i class="fas fa-info-circle me-2"></i> Ver Detalles
+                </button>
+                <a href="https://sistemagabipasajes.netlify.app/SistemaPasajes" target="_blank" class="btn btn-outline-primary flex-fill">
+                  <i class="fas fa-globe me-2"></i> Demo
                 </a>
-                <a href="https://github.com/GabrielIturreCs/Sistema-de-Pasajes" target="_blank" class="btn btn-secondary flex-fill">
-                  <i class="fab fa-github me-2"></i> Ver Repositorio
+                <a href="https://github.com/GabrielIturreCs/Sistema-de-Pasajes" target="_blank" class="btn btn-outline-secondary flex-fill">
+                  <i class="fab fa-github me-2"></i> Código
                 </a>
               </div>
             </div>
@@ -645,10 +690,13 @@
               
               <!-- Botones -->
               <div class="d-flex flex-column flex-sm-row gap-2">
-                <a href="https://peluqueriapetit.netlify.app" target="_blank" class="btn btn-primary flex-fill">
+                <button class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                  <i class="fas fa-eye me-2"></i> Ver más detalles
+                </button>
+                <a href="https://peluqueriapetit.netlify.app" target="_blank" class="btn btn-outline-primary flex-fill">
                   <i class="fas fa-globe me-2"></i> Ver Sitio Web
                 </a>
-                <a href="https://github.com/GabrielIturreCs/PeluqueriaWeb" target="_blank" class="btn btn-secondary flex-fill">
+                <a href="https://github.com/GabrielIturreCs/PeluqueriaWeb" target="_blank" class="btn btn-outline-secondary flex-fill">
                   <i class="fab fa-github me-2"></i> Ver Repositorio
                 </a>
               </div>
@@ -707,10 +755,13 @@
               
               <!-- Botones -->
               <div class="d-flex flex-column flex-sm-row gap-2">
-                <a href="https://victorbetomartinez.netlify.app/" target="_blank" class="btn btn-primary flex-fill">
+                <button class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#projectModal4">
+                  <i class="fas fa-eye me-2"></i> Ver más detalles
+                </button>
+                <a href="https://victorbetomartinez.netlify.app/" target="_blank" class="btn btn-outline-primary flex-fill">
                   <i class="fas fa-globe me-2"></i> Ver Sitio Web
                 </a>
-                <a href="https://github.com/GabrielIturreCs/VIajes-Martinez" target="_blank" class="btn btn-secondary flex-fill">
+                <a href="https://github.com/GabrielIturreCs/VIajes-Martinez" target="_blank" class="btn btn-outline-secondary flex-fill">
                   <i class="fab fa-github me-2"></i> Ver Repositorio
                 </a>
               </div>
@@ -768,7 +819,10 @@
       
       <!-- Botones -->
       <div class="d-flex flex-column flex-sm-row gap-2">
-        <a href="https://github.com/GabrielIturreCs/RegristroPacientes" target="_blank" class="btn btn-secondary w-100">
+        <button class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#projectModal5">
+          <i class="fas fa-eye me-2"></i> Ver más detalles
+        </button>
+        <a href="https://github.com/GabrielIturreCs/RegristroPacientes" target="_blank" class="btn btn-outline-secondary flex-fill">
           <i class="fab fa-github me-2"></i> Ver Repositorio
         </a>
       </div>
@@ -821,13 +875,16 @@
 
       <!-- Botones -->
       <div class="d-flex flex-column flex-sm-row gap-2">
-                <a href="https://gabygym.netlify.app/" target="_blank" class="btn btn-primary flex-fill">
-                  <i class="fas fa-globe me-2"></i> Ver Sitio Web
-                </a>
-                <a href="https://github.com/GabrielIturreCs/GimnasioGaby" target="_blank" class="btn btn-secondary flex-fill">
-                  <i class="fab fa-github me-2"></i> Ver Repositorio
-                </a>
-              </div>
+        <button class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#projectModal6">
+          <i class="fas fa-eye me-2"></i> Ver más detalles
+        </button>
+        <a href="https://gabygym.netlify.app/" target="_blank" class="btn btn-outline-primary flex-fill">
+          <i class="fas fa-globe me-2"></i> Ver Sitio Web
+        </a>
+        <a href="https://github.com/GabrielIturreCs/GimnasioGaby" target="_blank" class="btn btn-outline-secondary flex-fill">
+          <i class="fab fa-github me-2"></i> Ver Repositorio
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -853,101 +910,182 @@
         <h2 class="display-5 fw-bold mb-3">Mi <span class="text-primary">Educación</span></h2>
         <div class="divider-custom mx-auto"></div>
         <p class="text-light-emphasis mx-auto" style="max-width: 700px;">
-          A lo largo de mi trayectoria he adquirido conocimientos en diversas tecnologías y herramientas que me han permitido crecer como profesional en desarrollo web y programación.
+          Mi trayectoria educativa en desarrollo de software, desde la educación formal hasta certificaciones especializadas en tecnologías modernas.
         </p>
       </div>
       
-      <div class="education-timeline position-relative" data-aos="fade-up">
-        <!-- Línea vertical -->
-        <div class="timeline-line"></div>
-        
-        <!-- Tarjeta 1 -->
-        <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-          <div class="card bg-dark border-0 rounded-4 shadow-lg p-4 timeline-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="timeline-icon bg-primary text-white me-3">
-                <i class="fas fa-graduation-cap"></i>
+      <!-- Educación Formal -->
+      <div class="mb-5">
+        <h3 class="text-center fs-3 fw-bold text-primary mb-4">Educación Formal</h3>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="education-card formal-education" data-aos="zoom-in">
+              <div class="education-header">
+                <div class="education-icon-wrapper">
+                  <i class="fas fa-university"></i>
+                </div>
+                <div class="education-info">
+                  <h4 class="education-title">Analista Programador Universitario</h4>
+                  <p class="education-institution">Facultad de Ingeniería - Universidad Nacional de Jujuy</p>
+                  <p class="education-period">2022 - 2025 (En curso)</p>
+                </div>
+                <div class="education-status">
+                  <span class="status-badge current">En Curso</span>
+                </div>
               </div>
-              <div>
-                <p class="text-primary fw-semibold mb-0">2022 - 2025</p>
-                <h3 class="fs-4 fw-bold text-white mb-0">Facultad de Ingeniería - UNJu</h3>
+              <div class="education-content">
+                <p class="education-description">
+                  Carrera universitaria especializada en análisis y desarrollo de sistemas. Estudios avanzados en programación, bases de datos, 
+                  ingeniería de software y metodologías ágiles. Enfoque en tecnologías modernas y mejores prácticas de desarrollo.
+                </p>
+                <div class="education-skills">
+                  <h5>Áreas de Estudio:</h5>
+                  <div class="skills-tags">
+                    <span class="skill-tag">Programación Orientada a Objetos</span>
+                    <span class="skill-tag">Bases de Datos</span>
+                    <span class="skill-tag">Ingeniería de Software</span>
+                    <span class="skill-tag">Algoritmos y Estructuras</span>
+                    <span class="skill-tag">Metodologías Ágiles</span>
+                    <span class="skill-tag">Análisis de Sistemas</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-light-emphasis">
-              Actualmente soy estudiante avanzado de Analista Programador Universitario, con conocimientos en Angular, bases de datos, C++, JavaScript, Spring Boot, TypeScript, entre otros.
-            </p>
           </div>
         </div>
-        
-        <!-- Tarjeta 2 -->
-        <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
-          <div class="card bg-dark border-0 rounded-4 shadow-lg p-4 timeline-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="timeline-icon bg-primary text-white me-3">
-                <i class="fas fa-code"></i>
+      </div>
+
+      <!-- Certificaciones y Cursos -->
+      <div>
+        <h3 class="text-center fs-3 fw-bold text-primary mb-4">Certificaciones y Cursos</h3>
+        <div class="row g-4">
+          
+          <!-- Certificación Angular -->
+          <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="education-card certification">
+              <div class="education-header">
+                <div class="education-icon-wrapper angular">
+                  <i class="fab fa-angular"></i>
+                </div>
+                <div class="education-info">
+                  <h4 class="education-title">Universidad Angular</h4>
+                  <p class="education-institution">Udemy</p>
+                  <p class="education-period">2025</p>
+                </div>
+                <div class="education-status">
+                  <span class="status-badge completed">Completado</span>
+                </div>
               </div>
-              <div>
-                <p class="text-primary fw-semibold mb-0">2024</p>
-                <h3 class="fs-4 fw-bold text-white mb-0">TodoCode - HTML y CSS</h3>
+              <div class="education-content">
+                <p class="education-description">
+                  Certificación avanzada en Angular, cubriendo arquitectura de aplicaciones, TypeScript, Firebase, y despliegue en producción.
+                </p>
+                <div class="education-skills">
+                  <div class="skills-tags">
+                    <span class="skill-tag">Angular 19</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">RxJS</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-light-emphasis">
-              Aprendí HTML y CSS con Luisina. Este curso me permitió fortalecer mis habilidades en diseño web y crear interfaces atractivas y responsivas.
-            </p>
           </div>
-        </div>
-        
-        <!-- Tarjeta 3 -->
-        <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-          <div class="card bg-dark border-0 rounded-4 shadow-lg p-4 timeline-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="timeline-icon bg-primary text-white me-3">
-                <i class="fab fa-js"></i>
+
+          <!-- Certificación Web Development -->
+          <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="education-card certification">
+              <div class="education-header">
+                <div class="education-icon-wrapper web">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div class="education-info">
+                  <h4 class="education-title">Universidad Desarrollo Web</h4>
+                  <p class="education-institution">Udemy</p>
+                  <p class="education-period">2024</p>
+                </div>
+                <div class="education-status">
+                  <span class="status-badge completed">Completado</span>
+                </div>
               </div>
-              <div>
-                <p class="text-primary fw-semibold mb-0">2022</p>
-                <h3 class="fs-4 fw-bold text-white mb-0">Argentina Programa</h3>
+              <div class="education-content">
+                <p class="education-description">
+                  Curso integral de desarrollo web moderno, incluyendo DOM, eventos, POO y proyectos prácticos reales.
+                </p>
+                <div class="education-skills">
+                  <div class="skills-tags">
+                    <span class="skill-tag">JavaScript ES6+</span>
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">DOM Manipulation</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-light-emphasis">
-              Logré aprobar este curso donde aprendí los fundamentos de JavaScript y su aplicación en proyectos interactivos, desarrollando habilidades esenciales para la programación web.
-            </p>
           </div>
-        </div>
-        
-        <!-- Tarjeta 4 -->
-        <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
-          <div class="card bg-dark border-0 rounded-4 shadow-lg p-4 timeline-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="timeline-icon bg-primary text-white me-3">
-                <i class="fas fa-laptop-code"></i>
+
+          <!-- TodoCode -->
+          <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+            <div class="education-card certification">
+              <div class="education-header">
+                <div class="education-icon-wrapper design">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="education-info">
+                  <h4 class="education-title">HTML y CSS Avanzado</h4>
+                  <p class="education-institution">TodoCode</p>
+                  <p class="education-period">2024</p>
+                </div>
+                <div class="education-status">
+                  <span class="status-badge completed">Completado</span>
+                </div>
               </div>
-              <div>
-                <p class="text-primary fw-semibold mb-0">2024</p>
-                <h3 class="fs-4 fw-bold text-white mb-0">Universidad Desarrollo Web - Udemy</h3>
+              <div class="education-content">
+                <p class="education-description">
+                  Especialización en diseño web responsive y interfaces modernas, con enfoque en UX/UI y mejores prácticas.
+                </p>
+                <div class="education-skills">
+                  <div class="skills-tags">
+                    <span class="skill-tag">CSS Grid</span>
+                    <span class="skill-tag">Flexbox</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">Animaciones CSS</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-light-emphasis">
-              Este curso me permitió profundizar en HTML, CSS y JavaScript, incluyendo DOM, eventos, POO y proyectos prácticos como calculadoras y sistemas de administración.
-            </p>
           </div>
-        </div>
-        
-        <!-- Tarjeta 5 -->
-        <div class="timeline-item" data-aos="fade-right" data-aos-delay="500">
-          <div class="card bg-dark border-0 rounded-4 shadow-lg p-4 timeline-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="timeline-icon bg-primary text-white me-3">
-                <i class="fab fa-angular"></i>
+
+          <!-- Argentina Programa -->
+          <div class="col-md-6" data-aos="fade-left" data-aos-delay="400">
+            <div class="education-card certification">
+              <div class="education-header">
+                <div class="education-icon-wrapper javascript">
+                  <i class="fab fa-js-square"></i>
+                </div>
+                <div class="education-info">
+                  <h4 class="education-title">Programación desde Cero</h4>
+                  <p class="education-institution">Argentina Programa</p>
+                  <p class="education-period">2022</p>
+                </div>
+                <div class="education-status">
+                  <span class="status-badge completed">Completado</span>
+                </div>
               </div>
-              <div>
-                <p class="text-primary fw-semibold mb-0">2025</p>
-                <h3 class="fs-4 fw-bold text-white mb-0">Universidad Angular - Udemy</h3>
+              <div class="education-content">
+                <p class="education-description">
+                  Fundamentos sólidos de programación y JavaScript, estableciendo las bases para el desarrollo de aplicaciones interactivas.
+                </p>
+                <div class="education-skills">
+                  <div class="skills-tags">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Lógica de Programación</span>
+                    <span class="skill-tag">Algoritmos</span>
+                    <span class="skill-tag">Estructuras de Control</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-light-emphasis">
-              Aprendí arquitectura Angular, TypeScript, módulos, Firebase y despliegue de aplicaciones en producción, además de varios proyectos prácticos.
-            </p>
           </div>
         </div>
       </div>
@@ -1155,6 +1293,230 @@
       </div>
     </div>
   </footer>
+
+  <!-- Botón de scroll to top -->
+  <button class="scroll-top" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Modales de Proyectos -->
+  
+  <!-- Modal Proyecto 1: Juego Ahorcados -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-0 rounded-4">
+        <div class="modal-header border-bottom border-secondary">
+          <h1 class="modal-title fs-3 fw-bold text-primary">
+            <i class="fas fa-gamepad me-2"></i> Juego Ahorcados
+          </h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="project-gallery">
+                <div id="modalCarousel1" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner rounded-3 overflow-hidden">
+                    <div class="carousel-item active">
+                      <img src="images/ahorc.PNG" class="d-block w-100" alt="Juego Ahorcados">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="images/ahoracdos2.PNG" class="d-block w-100" alt="Juego Ahorcados">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="images/ahorcados.PNG" class="d-block w-100" alt="Juego Ahorcados">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel1" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel1" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="project-details">
+                <h3 class="fs-4 fw-bold mb-3">Descripción del Proyecto</h3>
+                <p class="text-light-emphasis mb-4">
+                  Un juego interactivo de Ahorcados desarrollado con Angular y TypeScript. El jugador debe adivinar palabras 
+                  antes de que se complete el dibujo del ahorcado. Incluye diferentes niveles de dificultad, sistema de 
+                  puntuación, y una interfaz moderna y responsive.
+                </p>
+                
+                <h4 class="fs-5 fw-bold mb-3">Características Principales</h4>
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Interfaz responsive y moderna</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Sistema de puntuación</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Múltiples categorías de palabras</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Animaciones suaves</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Progreso visual del ahorcado</li>
+                </ul>
+                
+                <h4 class="fs-5 fw-bold mb-3">Tecnologías Utilizadas</h4>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <span class="badge bg-danger rounded-pill px-3 py-2">Angular</span>
+                  <span class="badge bg-info rounded-pill px-3 py-2">TypeScript</span>
+                  <span class="badge bg-warning rounded-pill px-3 py-2">Bootstrap</span>
+                  <span class="badge bg-success rounded-pill px-3 py-2">Node.js</span>
+                  <span class="badge bg-primary rounded-pill px-3 py-2">HTML5</span>
+                  <span class="badge bg-purple rounded-pill px-3 py-2">CSS3</span>
+                </div>
+                
+                <div class="d-flex gap-2 flex-wrap">
+                  <a href="https://juegoahorcadosgabi.netlify.app/punto3" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-play me-2"></i> Jugar Ahora
+                  </a>
+                  <a href="https://github.com/GabrielIturreCs/JuegoAhorcados" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github me-2"></i> Ver Código
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Proyecto 2: Sistema de Pasajes -->
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-0 rounded-4">
+        <div class="modal-header border-bottom border-secondary">
+          <h1 class="modal-title fs-3 fw-bold text-primary">
+            <i class="fas fa-bus me-2"></i> Sistema de Venta de Pasajes
+          </h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="project-gallery">
+                <div id="modalCarousel2" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner rounded-3 overflow-hidden">
+                    <div class="carousel-item active">
+                      <img src="images/pasajes1.PNG" class="d-block w-100" alt="Sistema de Pasajes">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="images/pasajes2.PNG" class="d-block w-100" alt="Sistema de Pasajes">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="images/pasajes3.PNG" class="d-block w-100" alt="Sistema de Pasajes">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="project-details">
+                <h3 class="fs-4 fw-bold mb-3">Descripción del Proyecto</h3>
+                <p class="text-light-emphasis mb-4">
+                  Sistema completo para gestión de venta de pasajes de turismo. Permite registrar boletos, 
+                  calcular descuentos automáticos según la categoría del pasajero, y generar reportes detallados 
+                  de ventas. Incluye interfaz administrativa y panel de control.
+                </p>
+                
+                <h4 class="fs-5 fw-bold mb-3">Características Principales</h4>
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Gestión completa de pasajeros</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Cálculo automático de descuentos</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Reportes de ventas en tiempo real</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Data tables interactivas</li>
+                  <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Sistema de búsqueda avanzada</li>
+                </ul>
+                
+                <h4 class="fs-5 fw-bold mb-3">Tecnologías Utilizadas</h4>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <span class="badge bg-danger rounded-pill px-3 py-2">Angular</span>
+                  <span class="badge bg-info rounded-pill px-3 py-2">TypeScript</span>
+                  <span class="badge bg-warning rounded-pill px-3 py-2">Bootstrap</span>
+                  <span class="badge bg-success rounded-pill px-3 py-2">Node.js</span>
+                  <span class="badge bg-primary rounded-pill px-3 py-2">HTML5</span>
+                  <span class="badge bg-purple rounded-pill px-3 py-2">CSS3</span>
+                </div>
+                
+                <div class="d-flex gap-2 flex-wrap">
+                  <a href="https://sistemagabipasajes.netlify.app/SistemaPasajes" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-eye me-2"></i> Ver Demo
+                  </a>
+                  <a href="https://github.com/GabrielIturreCs/Sistema-de-Pasajes" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github me-2"></i> Ver Código
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Proyecto 3: Peluquería Petit -->
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-0 rounded-4">
+        <div class="modal-header border-bottom border-secondary">
+          <h1 class="modal-title fs-3 fw-bold text-primary">
+            <i class="fas fa-cut me-2"></i> Sitio Web Peluquería Petit
+          </h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="project-gallery">
+                <div id="modalCarousel3" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner rounded-3 overflow-hidden">
+                    <div class="carousel-item active">
+                      <img src="images/peluqueriapetit.PNG" class="d-block w-100" alt="Peluquería Petit">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="images/pelu2.PNG" class="d-block w-100" alt="Peluquería Petit">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel3" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel3" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="project-details">
+                <h3 class="fs-4 fw-bold mb-3">Descripción del Proyecto</h3>
+                <p class="text-light-emphasis mb-4">
+                  Sitio web profesional para Peluquería Petit, diseñado con enfoque en la experiencia del usuario.
+                </p>
+                
+                <h4 class="fs-5 fw-bold mb-3">Tecnologías Utilizadas</h4>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <span class="badge bg-primary rounded-pill px-3 py-2">HTML5</span>
+                  <span class="badge bg-purple rounded-pill px-3 py-2">CSS3</span>
+                  <span class="badge bg-warning rounded-pill px-3 py-2">Bootstrap</span>
+                </div>
+                
+                <div class="d-flex gap-2 flex-wrap">
+                  <a href="https://peluqueriapetit.netlify.app" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-globe me-2"></i> Ver Sitio Web
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -156,17 +156,55 @@ document.addEventListener("DOMContentLoaded", () => {
   // Iniciar la animación de escritura
   typeAndErase()
 
-  // Navbar scroll
+  // Navbar scroll con ocultación inteligente
   const navbar = document.getElementById("navbar")
-  const lastScrollY = window.scrollY
+  let lastScrollY = window.scrollY
+  let ticking = false
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      navbar.classList.add("bg-dark", "bg-opacity-90", "shadow")
+  function updateNavbar() {
+    const scrollY = window.scrollY
+    
+    // Agregar clase scrolled cuando se hace scroll
+    if (scrollY > 100) {
+      navbar.classList.add("scrolled")
     } else {
-      navbar.classList.remove("bg-dark", "bg-opacity-90", "shadow")
+      navbar.classList.remove("scrolled")
     }
-  })
+    
+    // Lógica para ocultar/mostrar navbar
+    if (scrollY > 80) { // Solo aplicar la lógica después de cierto scroll
+      if (scrollY > lastScrollY && scrollY > 150) {
+        // Scrolling hacia abajo - ocultar navbar
+        navbar.classList.add("navbar-hidden")
+        navbar.classList.remove("navbar-visible")
+        console.log("Navbar oculta - Scroll:", scrollY)
+      } else if (scrollY < lastScrollY) {
+        // Scrolling hacia arriba - mostrar navbar
+        navbar.classList.remove("navbar-hidden")
+        navbar.classList.add("navbar-visible")
+        console.log("Navbar visible - Scroll:", scrollY)
+      }
+    } else {
+      // Siempre mostrar navbar en la parte superior
+      navbar.classList.remove("navbar-hidden")
+      navbar.classList.add("navbar-visible")
+    }
+    
+    lastScrollY = scrollY
+    ticking = false
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateNavbar)
+      ticking = true
+    }
+  }
+
+  // Inicializar navbar como visible
+  navbar.classList.add("navbar-visible")
+  
+  window.addEventListener("scroll", requestTick, { passive: true })
 
   // Email modal
   const emailButton = document.getElementById("emailButton")
@@ -276,10 +314,36 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Verificar si hay parámetro de éxito en la URL
-  const urlParams = new URLSearchParams(window.location.search)
-  if (urlParams.get("success") === "true" && successModal) {
-    successModal.show()
+  // Botón de scroll to top
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Mostrar mensaje de éxito si viene de formulario
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === 'true') {
+    const successModal = document.getElementById('success-modal');
+    if (successModal) {
+      const modal = new bootstrap.Modal(successModal);
+      modal.show();
+      
+      // Limpiar URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
   }
 
   // Smooth scroll para los enlaces de navegación
@@ -347,7 +411,250 @@ window.addEventListener("load", () => {
       }, 300)
     }
   }, 3000)
+
+  // ==== NUEVAS FUNCIONES PROFESIONALES ====
+
+  // Texto fijo para presentación profesional
+  const typingText = document.getElementById('typing-text');
+  if (typingText) {
+    typingText.textContent = 'Desarrollador Full Stack';
+  }
+
+  // Funciones mejoradas para el email
+  const emailButton = document.getElementById('emailButton');
+  const emailModal = document.getElementById('emailModal');
+  const copyTooltip = document.getElementById('copyTooltip');
+  
+  if (emailButton && emailModal) {
+    emailButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      emailModal.classList.toggle('d-none');
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!emailButton.contains(e.target) && !emailModal.contains(e.target)) {
+        emailModal.classList.add('d-none');
+      }
+    });
+  }
+
+  // Inicializar tooltips de Bootstrap
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+  // Animaciones para las barras de progreso de tecnologías
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progressBars = entry.target.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+          const width = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 200);
+        });
+      }
+    });
+  }, observerOptions);
+
+  const techSection = document.getElementById('tecnologias');
+  if (techSection) {
+    progressObserver.observe(techSection);
+  }
+
+  // Efectos hover mejorados para tecnologías
+  const techItems = document.querySelectorAll('.tech-item-modern');
+  techItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const techName = item.getAttribute('data-tech');
+      if (techName) {
+        // Crear tooltip personalizado
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tech-tooltip';
+        tooltip.textContent = `Click para más información sobre ${techName}`;
+        tooltip.style.cssText = `
+          position: absolute;
+          background: rgba(0, 123, 255, 0.9);
+          color: white;
+          padding: 8px 12px;
+          border-radius: 6px;
+          font-size: 0.8rem;
+          white-space: nowrap;
+          z-index: 1000;
+          pointer-events: none;
+          top: -40px;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        `;
+        
+        item.style.position = 'relative';
+        item.appendChild(tooltip);
+        
+        setTimeout(() => {
+          tooltip.style.opacity = '1';
+        }, 100);
+      }
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      const tooltip = item.querySelector('.tech-tooltip');
+      if (tooltip) {
+        tooltip.remove();
+      }
+    });
+  });
+
+  // Smooth scroll mejorado para enlaces internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  }
+
+  // Parallax effect para elementos
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    
+    parallaxElements.forEach(element => {
+      const speed = element.dataset.speed || 0.5;
+      const yPos = -(scrolled * speed);
+      element.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+
+  // Contador animado para estadísticas (si las agregas)
+  const counters = document.querySelectorAll('.counter');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+        const increment = target / 100;
+        
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          setTimeout(() => counterObserver.observe(counter), 50);
+        } else {
+          counter.innerText = target;
+        }
+      }
+    });
+  });
+
+  counters.forEach(counter => {
+    counterObserver.observe(counter);
+  });
 })
+
+// ==== FUNCIONES GLOBALES ====
+
+// Función mejorada para copiar email
+function copyEmailAddress() {
+  const email = 'gabriel13iturre@gmail.com';
+  navigator.clipboard.writeText(email).then(() => {
+    const tooltip = document.getElementById('copyTooltip');
+    if (tooltip) {
+      tooltip.classList.add('show');
+      setTimeout(() => {
+        tooltip.classList.remove('show');
+      }, 2000);
+    }
+    
+    // Cerrar el modal después de copiar
+    const emailModal = document.getElementById('emailModal');
+    if (emailModal) {
+      emailModal.classList.add('d-none');
+    }
+  }).catch(err => {
+    console.error('Error al copiar:', err);
+    // Fallback para navegadores que no soportan clipboard API
+    const textArea = document.createElement('textarea');
+    textArea.value = email;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    const tooltip = document.getElementById('copyTooltip');
+    if (tooltip) {
+      tooltip.classList.add('show');
+      setTimeout(() => {
+        tooltip.classList.remove('show');
+      }, 2000);
+    }
+  });
+}
+
+// Función para lazy loading de imágenes
+function initLazyLoading() {
+  const images = document.querySelectorAll('img[data-src]');
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// Función para detectar dispositivos móviles
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Función para optimizar rendimiento en móviles
+function optimizeForMobile() {
+  if (isMobile()) {
+    // Reducir partículas en móviles
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.opacity = '0.5';
+    }
+    
+    // Desactivar algunas animaciones complejas
+    document.body.classList.add('mobile-optimized');
+  }
+}
+
+// Inicializar optimizaciones
+optimizeForMobile();
+initLazyLoading();
 
 // Asegurar que el scroll funcione correctamente
 document.documentElement.style.overflowY = "auto"
