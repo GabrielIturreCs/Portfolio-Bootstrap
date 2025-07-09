@@ -582,38 +582,80 @@ window.addEventListener("load", () => {
 // Función mejorada para copiar email
 function copyEmailAddress() {
   const email = 'gabriel13iturre@gmail.com';
-  navigator.clipboard.writeText(email).then(() => {
-    const tooltip = document.getElementById('copyTooltip');
-    if (tooltip) {
-      tooltip.classList.add('show');
+  
+  // Mostrar tooltip inmediatamente para feedback visual
+  const tooltip = document.getElementById('copyTooltip');
+  if (tooltip) {
+    tooltip.classList.add('show');
+  }
+  
+  // Intentar copiar usando la API moderna
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(email).then(() => {
+      console.log('Email copiado exitosamente');
+      // El tooltip ya está mostrado, solo lo ocultamos después de 2 segundos
       setTimeout(() => {
-        tooltip.classList.remove('show');
+        if (tooltip) {
+          tooltip.classList.remove('show');
+        }
       }, 2000);
-    }
-    
-    // Cerrar el modal después de copiar
-    const emailModal = document.getElementById('emailModal');
-    if (emailModal) {
-      emailModal.classList.add('d-none');
-    }
-  }).catch(err => {
-    console.error('Error al copiar:', err);
+    }).catch(err => {
+      console.error('Error al copiar con clipboard API:', err);
+      // Fallback al método antiguo
+      fallbackCopy();
+    });
+  } else {
     // Fallback para navegadores que no soportan clipboard API
-    const textArea = document.createElement('textarea');
-    textArea.value = email;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    
-    const tooltip = document.getElementById('copyTooltip');
-    if (tooltip) {
-      tooltip.classList.add('show');
-      setTimeout(() => {
-        tooltip.classList.remove('show');
-      }, 2000);
+    fallbackCopy();
+  }
+  
+  // Cerrar el modal después de copiar
+  const emailModal = document.getElementById('emailModal');
+  if (emailModal) {
+    emailModal.classList.add('d-none');
+  }
+  
+  // Función fallback para navegadores antiguos
+  function fallbackCopy() {
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = email;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      if (successful) {
+        console.log('Email copiado exitosamente con fallback');
+      } else {
+        console.error('No se pudo copiar el email');
+        // Mostrar mensaje de error si es necesario
+        if (tooltip) {
+          tooltip.textContent = 'Error al copiar';
+          tooltip.style.background = '#dc3545';
+        }
+      }
+    } catch (err) {
+      console.error('Error en fallback copy:', err);
+      if (tooltip) {
+        tooltip.textContent = 'Error al copiar';
+        tooltip.style.background = '#dc3545';
+      }
     }
-  });
+    
+    // Ocultar tooltip después de 2 segundos
+    setTimeout(() => {
+      if (tooltip) {
+        tooltip.classList.remove('show');
+        tooltip.textContent = '¡Copiado!';
+        tooltip.style.background = '#28a745';
+      }
+    }, 2000);
+  }
 }
 
 // Función para lazy loading de imágenes
@@ -659,3 +701,225 @@ initLazyLoading();
 // Asegurar que el scroll funcione correctamente
 document.documentElement.style.overflowY = "auto"
 document.body.style.overflowY = "auto"
+
+// ==== CHATBOT FUNCTIONALITY ====
+
+// Variables del chatbot
+let chatbotOpen = false;
+let isTyping = false;
+
+// Elementos del chatbot
+const chatbotButton = document.getElementById('chatbotButton');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotMessages = document.getElementById('chatbotMessages');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+
+// Función para abrir/cerrar el chatbot
+function toggleChatbot() {
+  const tooltip = document.getElementById('chatbotTooltip');
+  
+  if (chatbotOpen) {
+    chatbotWindow.classList.remove('show');
+    chatbotOpen = false;
+    // Mostrar el tooltip cuando se cierra el chat
+    if (tooltip) {
+      tooltip.classList.add('chatbot-tooltip-visible');
+    }
+  } else {
+    chatbotWindow.classList.add('show');
+    chatbotOpen = true;
+    chatbotInput.focus();
+    // Ocultar el tooltip cuando se abre el chat
+    if (tooltip) {
+      tooltip.classList.remove('chatbot-tooltip-visible');
+    }
+  }
+}
+
+// Función para agregar mensaje del usuario
+function addUserMessage(text) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'message user-message';
+  messageDiv.innerHTML = `
+    <div class="message-content">
+      <i class="fas fa-user message-icon"></i>
+      <div class="message-text">${text}</div>
+    </div>
+  `;
+  chatbotMessages.appendChild(messageDiv);
+  scrollToBottom();
+}
+
+// Función para agregar mensaje del bot
+function addBotMessage(text) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'message bot-message';
+  messageDiv.innerHTML = `
+    <div class="message-content">
+      <i class="fas fa-robot message-icon"></i>
+      <div class="message-text">${text}</div>
+    </div>
+  `;
+  chatbotMessages.appendChild(messageDiv);
+  scrollToBottom();
+}
+
+// Función para simular escritura del bot
+function addTypingMessage() {
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'message bot-message typing-message';
+  typingDiv.innerHTML = `
+    <div class="message-content">
+      <i class="fas fa-robot message-icon"></i>
+      <div class="message-text">
+        <span class="typing-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+    </div>
+  `;
+  chatbotMessages.appendChild(typingDiv);
+  scrollToBottom();
+  return typingDiv;
+}
+
+// Función para remover mensaje de escritura
+function removeTypingMessage(typingElement) {
+  if (typingElement && typingElement.parentNode) {
+    typingElement.parentNode.removeChild(typingElement);
+  }
+}
+
+// Función para hacer scroll al final
+function scrollToBottom() {
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// Función para procesar mensaje del usuario
+function processUserMessage(message) {
+  if (!message.trim()) return;
+  
+  // Agregar mensaje del usuario
+  addUserMessage(message);
+  
+  // Simular escritura del bot
+  const typingElement = addTypingMessage();
+  isTyping = true;
+  
+  // Obtener respuesta del servicio
+  setTimeout(() => {
+    removeTypingMessage(typingElement);
+    const response = chatbotService.obtenerRespuesta(message);
+    addBotMessage(response);
+    isTyping = false;
+  }, 1000 + Math.random() * 1000); // Tiempo aleatorio entre 1-2 segundos
+}
+
+// Función para enviar mensaje
+function sendMessage() {
+  const message = chatbotInput.value.trim();
+  if (message && !isTyping) {
+    chatbotInput.value = '';
+    processUserMessage(message);
+  }
+}
+
+// Event listeners del chatbot
+if (chatbotButton) {
+  chatbotButton.addEventListener('click', toggleChatbot);
+}
+
+if (chatbotClose) {
+  chatbotClose.addEventListener('click', toggleChatbot);
+}
+
+if (chatbotSend) {
+  chatbotSend.addEventListener('click', sendMessage);
+}
+
+if (chatbotInput) {
+  chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+}
+
+// Cerrar chatbot al hacer clic fuera
+document.addEventListener('click', (e) => {
+  if (chatbotOpen && 
+      !chatbotWindow.contains(e.target) && 
+      !chatbotButton.contains(e.target)) {
+    toggleChatbot();
+  }
+});
+
+// Agregar estilos CSS para los puntos de escritura
+const typingStyles = document.createElement('style');
+typingStyles.textContent = `
+  .typing-dots {
+    display: inline-flex;
+    gap: 4px;
+  }
+  
+  .typing-dots span {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: typingDot 1.4s infinite ease-in-out;
+  }
+  
+  .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0s; }
+  
+  @keyframes typingDot {
+    0%, 80%, 100% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+`;
+document.head.appendChild(typingStyles);
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Mostrar tooltip automáticamente
+  const tooltip = document.getElementById('chatbotTooltip');
+  const closeTooltipBtn = document.getElementById('closeTooltipBtn');
+  if (tooltip && closeTooltipBtn) {
+    tooltip.classList.add('chatbot-tooltip-visible');
+    closeTooltipBtn.addEventListener('click', function (e) {
+      tooltip.classList.remove('chatbot-tooltip-visible');
+    });
+  }
+});
+
+// Cambiar entre tabs de proyectos
+function mostrarProyectos(tipo) {
+  const personales = document.getElementById('proyectosPersonales');
+  const equipo = document.getElementById('proyectosEquipo');
+  const tabPersonales = document.getElementById('tabPersonales');
+  const tabEquipo = document.getElementById('tabEquipo');
+
+  if (tipo === 'personales') {
+    personales.classList.remove('d-none');
+    equipo.classList.add('d-none');
+    tabPersonales.classList.add('active');
+    tabEquipo.classList.remove('active');
+  } else {
+    personales.classList.add('d-none');
+    equipo.classList.remove('d-none');
+    tabPersonales.classList.remove('active');
+    tabEquipo.classList.add('active');
+  }
+}
