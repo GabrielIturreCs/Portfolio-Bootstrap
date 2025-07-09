@@ -899,6 +899,8 @@ document.addEventListener('DOMContentLoaded', function () {
   if (tooltip && closeTooltipBtn) {
     tooltip.classList.add('chatbot-tooltip-visible');
     closeTooltipBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       tooltip.classList.remove('chatbot-tooltip-visible');
     });
   }
