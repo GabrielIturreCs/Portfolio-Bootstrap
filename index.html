@@ -42,9 +42,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100 text-white position-relative" style="background: #040d21;">
+<body class="d-flex flex-column min-vh-100 text-white position-relative">
   <!-- Partículas de fondo -->
-  <div id="particles-js" class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1; opacity: 0.7;"></div>
+  <div id="particles-js" class="position-fixed top-0 start-0 w-100 h-100 particles-bg"></div>
 
   <!-- Header con Navbar -->
   <header id="navbar" class="fixed-top py-3 px-3 px-md-5 navbar-blur">
@@ -233,7 +233,7 @@
                     <a href="mailto:gabriel13iturre@gmail.com" class="d-flex align-items-center text-primary text-decoration-none email-option">
                       <i class="fas fa-paper-plane me-2"></i> Abrir en Gmail
                     </a>
-                    <button onclick="copyEmailAddress()" class="btn btn-link text-primary p-0 text-decoration-none text-start email-option">
+                    <button id="copyEmailBtn" class="btn btn-link text-primary p-0 text-decoration-none text-start email-option">
                       <i class="fas fa-copy me-2"></i> Copiar email
                     </button>
                   </div>
@@ -261,7 +261,7 @@
     <div class="text-center mb-5" data-aos="fade-up">
       <h2 class="display-5 fw-bold mb-3">Mis Últimos <span class="text-primary">Videos</span></h2>
       <div class="divider-custom mx-auto"></div>
-      <p class="text-light-emphasis mx-auto" style="max-width: 700px;">
+      <p class="text-light-emphasis mx-auto max-width-700">
         Comparto mi conocimiento a través de tutoriales y explicaciones sobre desarrollo web, programación y tecnologías actuales.
       </p>
     </div>
@@ -500,7 +500,7 @@
     <div class="text-center mb-5" data-aos="fade-up">
       <h2 class="display-4 fw-bold mb-3 text-primary">Proyecto Destacado</h2>
       <div class="divider-custom mx-auto"></div>
-      <p class="text-light-emphasis mx-auto" style="max-width: 700px;">
+      <p class="text-light-emphasis mx-auto max-width-700">
         Este es el proyecto grupal más completo y desafiante en el que he trabajado, integrando frontend, backend, autenticación, pagos y chatbot inteligente.
       </p>
     </div>
@@ -510,7 +510,7 @@
           <div class="position-relative">
             <!-- Carrusel de imágenes del sistema (más grande) -->
             <div id="carouselDestacado" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner rounded-4 overflow-hidden" style="height: 420px;">
+              <div class="carousel-inner rounded-4 overflow-hidden carousel-tall">
                 <div class="carousel-item active">
                   <img src="images/sistema 2.PNG" class="d-block w-100 h-100 object-fit-cover" alt="Sistema Odontológico">
                 </div>
@@ -605,15 +605,15 @@
       <div class="text-center mb-5" data-aos="fade-up">
         <h2 class="display-5 fw-bold mb-3">Mis <span class="text-primary">Proyectos</span></h2>
         <div class="divider-custom mx-auto"></div>
-        <p class="text-light-emphasis mx-auto" style="max-width: 700px;">
+        <p class="text-light-emphasis mx-auto max-width-700">
           Estos son algunos de los proyectos en los que he trabajado, demostrando mis habilidades en desarrollo web y programación.
         </p>
         <!-- Botones tipo tab para filtrar proyectos -->
         <div class="d-flex justify-content-center my-4">
-          <button id="tab-personales" class="tab-btn active me-2" onclick="mostrarProyectos('personales')">
+          <button id="tab-personales" class="tab-btn active me-2">
             <i class="fas fa-user"></i> <span class="d-none d-md-inline">Proyectos Personales</span>
           </button>
-          <button id="tab-equipo" class="tab-btn" onclick="mostrarProyectos('equipo')">
+          <button id="tab-equipo" class="tab-btn">
             <i class="fas fa-users"></i> <span class="d-none d-md-inline">Proyectos en Equipo</span>
           </button>
         </div>
@@ -972,7 +972,7 @@
 </div>
 
 <!-- Proyecto Odontológico en Proyectos Grupales -->
-<div class="col-md-6 proyecto-equipo" data-aos="fade-up" data-aos-delay="200" style="display:none;">
+<div class="col-md-6 proyecto-equipo" data-aos="fade-up" data-aos-delay="200">
   <div class="card bg-dark h-100 border-0 rounded-4 overflow-hidden shadow-lg project-card">
     <div class="position-relative">
       <!-- Carrusel de imágenes (pequeño) -->
@@ -982,7 +982,7 @@
           <button type="button" data-bs-target="#carouselSistemaMini" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselSistemaMini" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        <div class="carousel-inner" style="height: 220px;">
+        <div class="carousel-inner carousel-medium">
           <div class="carousel-item active">
             <img src="images/sistema 2.PNG" class="d-block w-100 project-img" alt="Sistema Odontológico">
           </div>
@@ -1056,7 +1056,7 @@
                   <button type="button" data-bs-target="#carouselGimnasio" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselGimnasio" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 </div>
-                <div class="carousel-inner" style="height: 220px;">
+                <div class="carousel-inner carousel-medium">
                   <div class="carousel-item active">
                     <img src="images/gym3.PNG" class="d-block w-100 project-img" alt="Sistema para gimnasio">
                   </div>
@@ -1180,7 +1180,7 @@
       <div class="text-center mb-5" data-aos="fade-up">
         <h2 class="display-5 fw-bold mb-3">Mi <span class="text-primary">Educación</span></h2>
         <div class="divider-custom mx-auto"></div>
-        <p class="text-light-emphasis mx-auto" style="max-width: 700px;">
+        <p class="text-light-emphasis mx-auto max-width-700">
           Mi trayectoria educativa en desarrollo de software, desde la educación formal hasta certificaciones especializadas en tecnologías modernas.
         </p>
       </div>
@@ -1369,7 +1369,7 @@
       <div class="text-center mb-5" data-aos="fade-up">
         <h2 class="display-5 fw-bold mb-3">Contáct<span class="text-primary">ame</span></h2>
         <div class="divider-custom mx-auto"></div>
-        <p class="text-light-emphasis mx-auto" style="max-width: 700px;">
+        <p class="text-light-emphasis mx-auto max-width-700">
           ¿Tienes un proyecto en mente? ¿Quieres colaborar conmigo? No dudes en contactarme. Estoy disponible para nuevas oportunidades y desafíos.
         </p>
       </div>
@@ -1558,7 +1558,7 @@
       
       <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
         <p class="mb-3 mb-md-0 small">Copyright © 2025 por Gabriel Iturre | Todos los derechos reservados.</p>
-        <a href="#hero" class="btn btn-dark btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+        <a href="#hero" class="btn btn-dark btn-sm rounded-circle d-flex align-items-center justify-content-center scroll-to-top-btn">
           <i class="fas fa-arrow-up"></i>
         </a>
       </div>
@@ -1957,29 +1957,7 @@
     </div>
   </div>
 
-  <script>
-    function mostrarProyectos(tipo) {
-      const personales = document.querySelectorAll('.proyecto-personal');
-      const equipo = document.querySelectorAll('.proyecto-equipo');
-      document.getElementById('tab-personales').classList.remove('btn-outline-primary');
-      document.getElementById('tab-equipo').classList.remove('btn-primary');
-      document.getElementById('tab-personales').classList.remove('active');
-      document.getElementById('tab-equipo').classList.remove('active');
-      if (tipo === 'personales') {
-        personales.forEach(p => p.style.display = '');
-        equipo.forEach(e => e.style.display = 'none');
-        document.getElementById('tab-personales').classList.add('active');
-        document.getElementById('tab-equipo').classList.remove('active');
-      } else {
-        personales.forEach(p => p.style.display = 'none');
-        equipo.forEach(e => e.style.display = '');
-        document.getElementById('tab-equipo').classList.add('active');
-        document.getElementById('tab-personales').classList.remove('active');
-      }
-    }
-    // Mostrar personales por defecto
-    mostrarProyectos('personales');
-  </script>
+
 
   <script>
     // ... otras funciones ...
