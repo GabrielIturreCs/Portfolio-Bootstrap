@@ -228,6 +228,14 @@ Su filosofía: La claridad es clave. Código limpio, diseño organizado y proces
 
 Para Gabriel, "no sé cómo hacerlo" nunca es una limitación; es el comienzo de un aprendizaje.`
     },
+    {
+      claves: ["novia", "pareja", "relacion", "amor", "tiene novia", "enamorado", "silvia"],
+      respuesta: `¡Sí! Gabriel está felizmente de novio con Silvia 💕. Ella es una parte importante de su vida y lo apoya en sus proyectos y ambiciones. 
+
+Más allá del código y la tecnología, Gabriel valora profundamente las relaciones personales y sabe balancear su pasión por la programación con el tiempo y la atención que merece su pareja. Entiende que aunque sea un programador dedicado, las relaciones humanas son fundamentales para una vida plena y equilibrada.
+
+¡Silvia es su apoyo constante en esta aventura de crear soluciones digitales y crecer profesionalmente!`
+    },
   ];
 
   function obtenerRespuesta(inputUsuario) {
