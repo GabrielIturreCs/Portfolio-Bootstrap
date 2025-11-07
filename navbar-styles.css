@@ -383,6 +383,49 @@
   }
 }
 
+/* Botón de tema en navbar */
+.theme-btn-navbar {
+  border-color: #00d4ff !important;
+  color: #00d4ff !important;
+  padding: 0.5rem 0.75rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: transparent !important;
+}
+
+.theme-btn-navbar:hover {
+  background: rgba(0, 212, 255, 0.15) !important;
+  border-color: #00d4ff !important;
+  color: #ffffff !important;
+  transform: rotate(20deg);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.theme-btn-navbar:active {
+  transform: rotate(20deg) scale(0.95);
+}
+
+.theme-btn-navbar i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+}
+
+.theme-btn-navbar.light-mode i::before {
+  content: '\f186'; /* fa-moon */
+}
+
+/* Responsive navbar theme button */
+@media (max-width: 768px) {
+  .theme-btn-navbar {
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem !important;
+  }
+}
 /* Botón X para cerrar menú en móviles */
 .btn-close-mobile {
   background: transparent;
