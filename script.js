@@ -453,3 +453,100 @@ window.copyEmail = function(email) {
     });
   }
 })();
+
+// ✅ CHATBOT - ABRIR/CERRAR VENTANA
+(function() {
+  const chatbotButton = document.getElementById("chatbotButton");
+  const chatbotWindow = document.getElementById("chatbotWindow");
+  const chatbotClose = document.getElementById("chatbotClose");
+  const closeTooltipBtn = document.getElementById("closeTooltipBtn");
+  const chatbotTooltip = document.getElementById("chatbotTooltip");
+  const chatbotSend = document.getElementById("chatbotSend");
+  const chatbotInput = document.getElementById("chatbotInput");
+  const chatbotMessages = document.getElementById("chatbotMessages");
+
+  if (chatbotButton) {
+    // Abrir chat al hacer clic en el botón
+    chatbotButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (chatbotWindow) {
+        chatbotWindow.style.display = chatbotWindow.style.display === "none" ? "flex" : "none";
+        if (chatbotTooltip) {
+          chatbotTooltip.style.display = "none";
+        }
+      }
+    });
+  }
+
+  // Cerrar chat al hacer clic en la X
+  if (chatbotClose) {
+    chatbotClose.addEventListener("click", () => {
+      if (chatbotWindow) {
+        chatbotWindow.style.display = "none";
+      }
+    });
+  }
+
+  // Cerrar tooltip
+  if (closeTooltipBtn) {
+    closeTooltipBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (chatbotTooltip) {
+        chatbotTooltip.style.display = "none";
+      }
+    });
+  }
+
+  // ✅ ENVIAR MENSAJE DEL CHATBOT
+  function enviarMensaje() {
+    if (!chatbotInput || !chatbotMessages) return;
+
+    const mensaje = chatbotInput.value.trim();
+    if (!mensaje) return;
+
+    // Agregar mensaje del usuario
+    const mensajeUsuario = document.createElement("div");
+    mensajeUsuario.className = "message user-message";
+    mensajeUsuario.innerHTML = `
+      <div class="message-content">
+        <div class="message-text">${mensaje}</div>
+        <i class="fas fa-user message-icon"></i>
+      </div>
+    `;
+    chatbotMessages.appendChild(mensajeUsuario);
+    chatbotInput.value = "";
+
+    // Scroll a abajo
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+    // Obtener respuesta del bot
+    setTimeout(() => {
+      const respuesta = chatbotService.obtenerRespuesta(mensaje);
+      const mensajeBot = document.createElement("div");
+      mensajeBot.className = "message bot-message";
+      mensajeBot.innerHTML = `
+        <div class="message-content">
+          <i class="fas fa-robot message-icon"></i>
+          <div class="message-text">${respuesta}</div>
+        </div>
+      `;
+      chatbotMessages.appendChild(mensajeBot);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }, 300);
+  }
+
+  // Enviar al hacer clic en el botón
+  if (chatbotSend) {
+    chatbotSend.addEventListener("click", enviarMensaje);
+  }
+
+  // Enviar al presionar Enter en el input
+  if (chatbotInput) {
+    chatbotInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        enviarMensaje();
+      }
+    });
+  }
+})();
