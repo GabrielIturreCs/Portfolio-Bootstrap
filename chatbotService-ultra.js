@@ -120,7 +120,7 @@ Más allá de lo técnico, lo que me destaca son mis habilidades humanas: respon
 - LinkedIn: https://www.linkedin.com/in/gabriel-iturre-73900626a/
 - GitHub: https://github.com/GabrielIturreCs
 - TikTok: @gapherdev
-- Email: gabrieliturre.cs@gmail.com
+- Email: gabriel13iturre@gmail.com
 - Blog: https://gabrieliturre.hashnode.dev/
 ¡Me encanta conectar con otros desarrolladores y oportunidades interesantes!`
     },
