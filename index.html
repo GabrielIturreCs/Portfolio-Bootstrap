@@ -48,6 +48,8 @@
   <link rel="stylesheet" href="tech-styles.css">
   <!-- Proyectos Moderno CSS -->
   <link rel="stylesheet" href="projects-styles.css">
+  <!-- Navbar Moderno CSS -->
+  <link rel="stylesheet" href="navbar-styles.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100 text-white position-relative">
@@ -82,6 +84,11 @@
         
         <!-- Navegación mejorada -->
         <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Botón X para cerrar en móviles -->
+          <button class="btn-close-mobile d-lg-none ms-auto mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Cerrar menú">
+            <i class="fas fa-times"></i>
+          </button>
+          
           <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item">
               <a class="nav-link nav-link-modern active" href="#hero" data-section="hero">
@@ -102,7 +109,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-modern" href="#proyectos" data-section="proyectos">
+              <a class="nav-link nav-link-modern" href="#proyecto-destacado" data-section="proyecto-destacado">
                 <span class="nav-text">Proyectos</span>
                 <span class="nav-indicator"></span>
               </a>
@@ -163,7 +170,7 @@
             
             <!-- Descripción con más espacio -->
             <p class="lead text-light-emphasis mb-5" style="max-width: 520px; line-height: 1.9;">
-              Especializado en transformar ideas en soluciones digitales modernas y funcionales. Creo experiencias web excepcionales con Angular, Node.js y las mejores prácticas del desarrollo.
+             Especialista en crear soluciones digitales modernas, eficientes y diseñadas para funcionar en el mundo real. Me apasiona convertir ideas en productos concretos: sistemas web, plataformas de gestión y experiencias online funcionales y atractivas
             </p>
             
             <!-- Botones CTA con más espacio -->
@@ -180,7 +187,7 @@
                 <i class="fas fa-blog me-2"></i> Blog
               </a>
             </div>
-            
+
             <!-- Redes Sociales con mejor espaciado -->
             <div class="d-flex gap-4 flex-wrap">
               <a href="https://www.linkedin.com/in/gabriel-iturre-73900626a/" class="social-icon-hero" target="_blank" title="LinkedIn">
@@ -200,10 +207,29 @@
         </div>
         
         <!-- Columna de Foto (Derecha) -->
-        <div class="col-lg-6 order-1 order-lg-2 position-relative" data-aos="fade-left" data-aos-duration="1000" style="min-height: 500px;">
+        <div class="col-lg-6 order-1 order-lg-2 d-flex flex-column align-items-center" data-aos="fade-left" data-aos-duration="1000">
           <div class="profile-circle-hero">
             <img src="images/AirBrush_20251107013034-Photoroom.png" alt="Gabriel Iturre" class="profile-img-hero">
             <div class="profile-circle-glow"></div>
+          </div>
+
+          <!-- Email Contact Section - Below Profile Photo -->
+          <div class="d-flex flex-column align-items-center gap-3 email-contact-hero mt-4" style="user-select: none;">
+            <div class="email-icon-wrapper">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="email-content" style="text-align: center;">
+              <p class="email-label mb-0" style="user-select: none;">Contáctame por correo</p>
+              <div class="email-address-container" style="user-select: none;">
+                <span class="email-address" style="user-select: none;">gabriel13iturre@gmail.com</span>
+                <button class="email-action-btn" title="Abrir en Gmail" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=gabriel13iturre@gmail.com', '_blank')">
+                  <i class="fas fa-external-link-alt"></i>
+                </button>
+                <button class="email-action-btn" title="Copiar correo" onclick="copyEmail('gabriel13iturre@gmail.com')">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         

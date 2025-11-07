@@ -395,3 +395,48 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// ✅ FUNCIÓN PARA COPIAR EMAIL
+window.copyEmail = function(email) {
+  // Crear un elemento temporal
+  const tempInput = document.createElement("textarea");
+  tempInput.value = email;
+  tempInput.style.position = "absolute";
+  tempInput.style.opacity = "0";
+  document.body.appendChild(tempInput);
+
+  // Seleccionar y copiar
+  tempInput.select();
+  document.execCommand("copy");
+
+  // Eliminar el elemento
+  document.body.removeChild(tempInput);
+
+  // Mostrar notificación de éxito
+  const button = event.target.closest(".email-action-btn");
+  const originalIcon = button.innerHTML;
+  button.innerHTML = '<i class="fas fa-check"></i>';
+  button.style.color = "#00d4ff";
+
+  // Restaurar después de 2 segundos
+  setTimeout(() => {
+    button.innerHTML = originalIcon;
+    button.style.color = "";
+  }, 2000);
+};
+
+// ✅ CERRAR MENÚ MÓVIL AL HACER CLIC EN ENLACE
+(function() {
+  const navbarCollapse = document.getElementById("navbarNav");
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      // Usar Bootstrap collapse API para cerrar
+      const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false
+      });
+      bsCollapse.hide();
+    });
+  });
+})();

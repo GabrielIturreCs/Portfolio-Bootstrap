@@ -182,11 +182,10 @@
   width: 400px;
   height: 400px;
   max-width: 100%;
-  position: absolute;
-  top: 0;  /* ✅ Empieza desde la parte superior del Hero */
-  right: 5%;
+  position: relative;
   animation: floatHero 3.5s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
   filter: drop-shadow(0 0 60px rgba(13, 110, 253, 0.5));
+  flex-shrink: 0;
 }
 
 @keyframes floatHero {
@@ -463,15 +462,20 @@
   .profile-circle-hero {
     width: 310px;
     height: 310px;
-    position: absolute;
-    top: 0;
-    right: 2%;
+    position: relative;
+    flex-shrink: 0;
+    margin: 0 auto;
   }
 
   .social-icon-hero {
     width: 50px;
     height: 50px;
     font-size: 1.1rem;
+  }
+
+  /* Email contact en tablet - más bajo */
+  .email-contact-hero {
+    margin-top: 2.5rem !important;
   }
 }
 
@@ -498,10 +502,9 @@
   .profile-circle-hero {
     width: 270px;
     height: 270px;
-    position: absolute;
-    top: 0;
-    right: 50%;
-    transform: translateX(50%);  /* ✅ Centrado en móviles */
+    position: relative;
+    flex-shrink: 0;
+    margin: 0 auto;
   }
 
   .social-icon-hero {
@@ -513,6 +516,11 @@
   #hero .btn {
     font-size: 0.95rem;
     padding: 0.7rem 2rem;
+  }
+
+  /* Email contact en móviles - más bajo */
+  .email-contact-hero {
+    margin-top: 2rem !important;
   }
 }
 
@@ -644,3 +652,163 @@
   }
 }
 
+/* ================================
+   EMAIL CONTACT EN HERO
+   ================================ */
+
+.email-contact-hero {
+  animation: slideInUp 0.8s ease-out 0.4s both;
+  pointer-events: auto;
+}
+
+.email-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(13, 110, 253, 0.2) 100%);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #00d4ff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.email-contact-hero:hover .email-icon-wrapper {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3) 0%, rgba(13, 110, 253, 0.3) 100%);
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.email-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.email-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.email-address-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.2rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(13, 110, 253, 0.1) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.email-contact-hero:hover .email-address-container {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(13, 110, 253, 0.15) 100%);
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+}
+
+.email-address {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00d4ff;
+  user-select: none;
+  pointer-events: none;
+}
+
+.email-action-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: rgba(0, 212, 255, 0.7);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.email-action-btn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+  color: #00d4ff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.email-action-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .email-contact-hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .email-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .email-address-container {
+    padding: 0.6rem 1rem;
+  }
+
+  .email-address {
+    font-size: 0.9rem;
+  }
+
+  .email-action-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .email-contact-hero {
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .email-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .email-label {
+    font-size: 0.85rem;
+  }
+
+  .email-address {
+    font-size: 0.85rem;
+  }
+
+  .email-address-container {
+    padding: 0.5rem 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .email-action-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+}
