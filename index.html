@@ -42,6 +42,10 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Descargar CV CSS -->
   <link rel="stylesheet" href="descargar.css">
+  <!-- Hero Modernizado CSS -->
+  <link rel="stylesheet" href="hero-styles.css">
+  <!-- Tecnologías Moderno CSS -->
+  <link rel="stylesheet" href="tech-styles.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100 text-white position-relative">
@@ -124,124 +128,83 @@
       </div>
     </nav>
   </header>
-  <!-- Sección Hero con Video -->
-  <section id="hero" class="min-vh-100 d-flex flex-column justify-content-center align-items-center pt-5 pb-4 px-3 position-relative">
+  <!-- Sección Hero - Presentación Principal -->
+  <section id="hero" class="min-vh-100 d-flex flex-column justify-content-center align-items-center pt-5 pb-4 px-3 position-relative overflow-hidden">
     <div class="container">
-      
-      <div class="row align-items-center">
-        <!-- Video de presentación -->
-        <div class="col-lg-6 order-2 order-lg-1 mb-5 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
-          <div class="video-container position-relative rounded-4 overflow-hidden shadow-lg border border-4 border-primary border-opacity-50">
-            <iframe 
-              class="w-100 h-100"
-              src="https://www.youtube.com/embed/j78UH984PNQ?rel=0&autoplay=1&mute=1"
-              title="Presentación profesional de Gabriel Iturre" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              allowfullscreen>
-            </iframe>
-          </div>
-          
-          <!-- Botones debajo del video -->
-          <div class="mt-4 d-flex flex-column flex-sm-row gap-3 justify-content-center">
-            <button 
-              id="cv-button-hero"
-              class="btn btn-primary btn-lg shadow-sm">
-              <i class="fas fa-file-download me-2"></i> Descargar CV
-            </button>
-            <a 
-              href="https://gabrieliturre.hashnode.dev/" 
-              target="_blank"
-              class="btn btn-secondary btn-lg shadow-sm">
-              <i class="fas fa-blog me-2"></i> Blog
-            </a>  
+      <div class="row align-items-center gy-5">
+        
+        <!-- Columna de Texto (Izquierda) -->
+        <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
+          <div class="pe-lg-5">
+            <!-- Saludo pequeño con detalles visuales -->
+            <p class="text-primary fw-semibold mb-4" style="font-size: 1.1rem;">
+              <i class="fas fa-arrow-right me-2"></i> Hola, soy
+            </p>
+            
+            <!-- Línea decorativa sutil -->
+            <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #0d6efd, #00d4ff); border-radius: 2px; margin-bottom: 1.5rem;"></div>
+            
+            <!-- Nombre grande con estilo -->
+            <h1 class="fw-900 mb-4" style="line-height: 1.15;">
+              Gabriel<br><span class="text-primary">Iturre</span>
+            </h1>
+            
+            <!-- Línea decorativa en el título -->
+            <div style="width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent); margin: 1.5rem 0;"></div>
+            
+            <!-- Título con animación de escritura -->
+            <div class="mb-5">
+              <p class="fs-4 text-light-emphasis fw-medium">
+                <span class="typing-text"><span class="text-primary">Full Stack</span> Developer</span>
+              </p>
+            </div>
+            
+            <!-- Descripción con más espacio -->
+            <p class="lead text-light-emphasis mb-5" style="max-width: 520px; line-height: 1.9;">
+              Especializado en transformar ideas en soluciones digitales modernas y funcionales. Creo experiencias web excepcionales con Angular, Node.js y las mejores prácticas del desarrollo.
+            </p>
+            
+            <!-- Botones CTA con más espacio -->
+            <div class="d-flex flex-wrap gap-4 mb-6" style="margin-bottom: 3rem;">
+              <button 
+                id="cv-button-hero"
+                class="btn btn-primary btn-lg px-4 fw-bold">
+                <i class="fas fa-file-download me-2"></i> Descargar CV
+              </button>
+              <a 
+                href="https://gabrieliturre.hashnode.dev/" 
+                target="_blank"
+                class="btn btn-outline-primary btn-lg px-4 fw-bold">
+                <i class="fas fa-blog me-2"></i> Blog
+              </a>
+            </div>
+            
+            <!-- Redes Sociales con mejor espaciado -->
+            <div class="d-flex gap-4 flex-wrap">
+              <a href="https://www.linkedin.com/in/gabriel-iturre-73900626a/" class="social-icon-hero" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/GabrielIturreCs" class="social-icon-hero" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.tiktok.com/@gapherdev" class="social-icon-hero" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UC_wJwXQHA7llnQUmLbQK8qg" class="social-icon-hero" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
           </div>
         </div>
         
-        <!-- Información personal con foto al lado derecho-->
-        <div class="col-lg-6 order-1 order-lg-2 text-center text-lg-start mb-5 mb-lg-0" data-aos="fade-left" data-aos-duration="1000">
-          <div class="d-flex flex-column align-items-center align-items-lg-start">
-            <div class="d-flex flex-column flex-md-row align-items-center gap-4 mb-4">
-              <div class="profile-image-container position-relative">
-                <img src="images/IMG_20230705_114537_019~2 (1).jpg" alt="Gabriel Iturre" class="profile-image rounded-circle img-fluid border border-4 border-primary border-opacity-50 shadow-lg">
-                <div class="profile-status-indicator"></div>
-              </div>
-              
-              <div class="text-center text-md-start">
-                <h1 class="display-4 fw-bold mb-3">
-                  Hola, soy <span class="text-primary">Gabriel</span>
-                </h1>
-                
-                <div class="typing-container mb-3">
-                  <span class="typing-text fs-3 text-primary fw-semibold" id="typing-text">Desarrollador Full Stack</span>
-                  <span class="typing-cursor">|</span>
-                </div>
-                
-                <div class="expertise-badges d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Frontend</span>
-                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Backend</span>
-                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Angular</span>
-                  <span class="badge bg-primary bg-opacity-25 text-white border border-primary px-3 py-2 fw-semibold">Express.js</span>
-                </div>
-              </div>
-            </div>
-            
-            <p class="mt-2 text-light-emphasis lead">
-              Especializado en transformar ideas en soluciones digitales modernas y funcionales. 
-              Combino experiencia técnica con visión creativa para crear experiencias web excepcionales.
-            </p>
-            
-      <!-- Redes Sociales -->
-<div class="d-flex mt-4 gap-3">
-  <a href="https://www.tiktok.com/@gapherdev?is_from_webapp=1&sender_device=pcm" class="social-icon" target="_blank">
-    <i class="fab fa-tiktok"></i>
-  </a>
-  <a href="https://www.linkedin.com/in/gabriel-iturre-73900626a/" class="social-icon" target="_blank">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-  <a href="https://github.com/GabrielIturreCs" class="social-icon" target="_blank">
-    <i class="fab fa-github"></i>
-  </a>
-  <!-- Ícono de YouTube -->
-  <a href="https://www.youtube.com/channel/UC_wJwXQHA7llnQUmLbQK8qg" class="social-icon" target="_blank">
-    <i class="fab fa-youtube"></i>
-  </a>
-</div>
-            
-            <!-- Email con funciones mejoradas -->
-            <div class="mt-4 position-relative w-100">
-              <div class="email-container position-relative">
-                <button 
-                  id="emailButton"
-                  class="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2 position-relative email-btn"
-                  data-bs-toggle="tooltip" 
-                  data-bs-placement="top" 
-                  title="Haz clic para ver opciones de contacto">
-                  <i class="fas fa-envelope"></i> 
-                  <span class="email-text">gabriel13iturre@gmail.com</span>
-                  <i class="fas fa-copy email-copy-icon" id="copyIcon"></i>
-                </button>
-                
-                <!-- Tooltip de copiado -->
-                <div id="copyTooltip" class="copy-tooltip position-absolute">
-                  <i class="fas fa-check me-1"></i> ¡Copiado!
-                </div>
-                
-                <!-- Modal que se muestra al hacer clic -->
-                <div id="emailModal" class="position-absolute start-0 top-100 mt-2 p-3 bg-dark border border-primary border-opacity-25 rounded-3 shadow-lg d-none email-modal">
-                  <div class="d-flex flex-column gap-2">
-                    <a href="mailto:gabriel13iturre@gmail.com" class="d-flex align-items-center text-primary text-decoration-none email-option">
-                      <i class="fas fa-paper-plane me-2"></i> Abrir en Gmail
-                    </a>
-                    <button id="copyEmailBtn" class="btn btn-link text-primary p-0 text-decoration-none text-start email-option">
-                      <i class="fas fa-copy me-2"></i> Copiar email
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- Columna de Foto (Derecha) -->
+        <div class="col-lg-6 order-1 order-lg-2 position-relative" data-aos="fade-left" data-aos-duration="1000" style="min-height: 500px;">
+          <div class="profile-circle-hero">
+            <img src="images/AirBrush_20251107013034-Photoroom.png" alt="Gabriel Iturre" class="profile-img-hero">
+            <div class="profile-circle-glow"></div>
           </div>
         </div>
+        
       </div>
     </div>
     
@@ -360,13 +323,13 @@
   <section id="tecnologias" class="py-5 px-3 position-relative bg-dark bg-opacity-25">
   <div class="container py-5">
     <div class="text-center mb-5" data-aos="fade-up">
-      <h2 class="display-5 fw-bold mb-3">Mis <span class="text-primary">Tecnologías</span></h2>
+      <h2 class="display-5 fw-bold mb-3 animated-heading">Mis <span class="text-primary">Tecnologías</span></h2>
       <div class="divider-custom mx-auto"></div>
     </div>
 
     <!-- Stack Tecnológico Principal -->
     <div class="text-center mb-5">
-      <h3 class="fs-2 fw-bold text-primary mb-4">Stack Principal</h3>
+      <h3 class="fs-2 fw-bold text-primary mb-4 animated-heading">Stack Principal</h3>
       <div class="row g-4 justify-content-center">
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="tech-card-main" data-aos="flip-left" data-aos-delay="100">
@@ -411,7 +374,7 @@
     <div class="row g-4">
       <div class="col-md-6">
         <div class="tech-category-card" data-aos="fade-right">
-          <h4 class="tech-category-title">
+          <h4 class="tech-category-title animated-heading">
             <i class="fas fa-paint-brush me-2"></i> Frontend & UI
           </h4>
           <div class="tech-grid">
@@ -445,7 +408,7 @@
       
       <div class="col-md-6">
         <div class="tech-category-card" data-aos="fade-left">
-          <h4 class="tech-category-title">
+          <h4 class="tech-category-title animated-heading">
             <i class="fas fa-server me-2"></i> Backend & Database
           </h4>
           <div class="tech-grid">
@@ -512,10 +475,10 @@
             <div id="carouselDestacado" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner rounded-4 overflow-hidden carousel-tall">
                 <div class="carousel-item active">
-                  <img src="images/sistema 2.PNG" class="d-block w-100 h-100 object-fit-cover" alt="Sistema Odontológico">
+                  <img src="images/sistema odontologico.png" class="d-block w-100 h-100 object-fit-cover" alt="Sistema Odontológico">
                 </div>
                 <div class="carousel-item">
-                  <img src="images/sistema1.PNG" class="d-block w-100 h-100 object-fit-cover" alt="Sistema Odontológico">
+                  <img src="images/sistema 2.PNG" class="d-block w-100 h-100 object-fit-cover" alt="Sistema Odontológico">
                 </div>
                 <div class="carousel-item">
                   <img src="images/sistema 3.PNG" class="d-block w-100 h-100 object-fit-cover" alt="Sistema Odontológico">
@@ -2199,6 +2162,7 @@
   <script src="chatbotService-ultra.js"></script>
   <script src="script.js"></script>
   <script src="descargar.js"></script>
+  <script src="animations.js"></script>
 
 </body>
 </html>

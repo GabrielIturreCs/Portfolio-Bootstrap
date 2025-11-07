@@ -341,6 +341,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mostrar proyectos personales por defecto
   window.mostrarProyectos("personales");
+
+  // ✅ ANIMAR LETRAS INDIVIDUALES EN HEADINGS
+  function animateHeadingLetters() {
+    const headings = document.querySelectorAll(".animated-heading");
+    headings.forEach((heading) => {
+      const text = heading.innerText;
+      let newHTML = "";
+      let charCount = 0;
+
+      // Iterar sobre cada nodo (texto e elementos)
+      heading.childNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          // Nodo de texto
+          const chars = node.textContent.split("");
+          chars.forEach((char) => {
+            if (char === " ") {
+              newHTML += `<span class="letter" style="margin: 0 3px;"> </span>`;
+            } else {
+              newHTML += `<span class="letter">${char}</span>`;
+            }
+            charCount++;
+          });
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          // Elemento (ej: span con text-primary)
+          const classes = node.className;
+          const chars = node.textContent.split("");
+          chars.forEach((char) => {
+            if (char === " ") {
+              newHTML += `<span class="letter ${classes}" style="margin: 0 3px;"> </span>`;
+            } else {
+              newHTML += `<span class="letter ${classes}">${char}</span>`;
+            }
+            charCount++;
+          });
+        }
+      });
+
+      heading.innerHTML = newHTML;
+    });
+  }
+
+  // Ejecutar animación de letras
+  animateHeadingLetters();
 });
 
 // ✅ ANIMACIÓN FADE-IN PARA CSS
