@@ -425,18 +425,31 @@ window.copyEmail = function(email) {
   }, 2000);
 };
 
-// ✅ CERRAR MENÚ MÓVIL AL HACER CLIC EN ENLACE
+// ✅ CERRAR MENÚ MÓVIL AL HACER CLIC EN ENLACE O BOTÓN X
 (function() {
   const navbarCollapse = document.getElementById("navbarNav");
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+  const btnCloseNavbar = document.getElementById("btn-close-navbar");
 
+  // Cerrar al hacer clic en un enlace
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
-      // Usar Bootstrap collapse API para cerrar
       const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
         toggle: false
       });
       bsCollapse.hide();
     });
   });
+
+  // Cerrar al hacer clic en el botón X
+  if (btnCloseNavbar) {
+    btnCloseNavbar.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false
+      });
+      bsCollapse.hide();
+    });
+  }
 })();
