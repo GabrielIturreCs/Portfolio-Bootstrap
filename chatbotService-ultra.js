@@ -2,15 +2,51 @@ const chatbotService = (() => {
   const respuestas = [
     {
       claves: ["tecnologias", "stack", "herramientas", "lenguajes", "skills", "sabes usar", "sistemas", "que tecnologias", "que lenguajes"],
-      respuesta: `Trabajo con un stack fullstack moderno. En frontend utilizo Angular, HTML5, CSS3, Bootstrap y JavaScript puro. En backend, uso Node.js con Express y también Java para aplicaciones estructuradas. Manejo MongoDB (local y Atlas), MySQL, PostgreSQL (Docker), Firebase y consumo APIs REST. También sé trabajar sin frameworks cuando el proyecto lo requiere.`
+      respuesta: `Gabriel trabaja con un stack moderno y profesional, orientado a construir soluciones escalables y eficientes:
+
+FRONTEND: HTML5 semántico, CSS3 avanzado, JavaScript puro, Angular (su especialidad), TypeScript, Bootstrap, diseño responsivo.
+
+BACKEND: Node.js con Express para APIs REST robustas, Java para aplicaciones empresariales, lógica de negocio compleja.
+
+BASES DE DATOS: MySQL (Workbench), MongoDB (Atlas), PostgreSQL (Docker), Firebase con Firestore, modelado y relaciones complejas.
+
+INFRAESTRUCTURA & HERRAMIENTAS: Docker para contenedores, Grafana y Prometheus para monitoreo, Jira para gestión de proyectos, Git para versionado profesional.
+
+INTEGRACIONES: Mercado Pago API, WhatsApp Business API, APIs REST externas, autenticación OAuth.
+
+Su enfoque siempre es elegir la herramienta correcta para cada problema, priorizando claridad y escalabilidad.`
     },
     {
       claves: ["frontend", "cliente", "vista", "diseño", "interfaz", "angular", "html", "css", "bootstrap", "typescript"],
-      respuesta: `Tengo amplia experiencia en desarrollo frontend usando Angular, HTML semántico, CSS optimizado, y Bootstrap. Me enfoco en diseño responsivo, accesibilidad, SEO técnico, animaciones fluidas y experiencia de usuario intuitiva. También he desarrollado sitios estáticos rápidos y optimizados para servicios locales como peluquerías.`
+      respuesta: `En frontend, Gabriel tiene amplia experiencia construyendo interfaces modernas y funcionales:
+
+✓ FRAMEWORKS: Angular es su especialidad, con TypeScript, componentes estructurados y arquitectura escalable.
+
+✓ LENGUAJES: HTML5 semántico optimizado para SEO, CSS3 avanzado con Flexbox, Grid, animaciones, responsive design.
+
+✓ UX/UI: Diseño responsivo perfecto en mobile/tablet/desktop, accesibilidad, experiencia de usuario intuitiva.
+
+✓ HERRAMIENTAS: Bootstrap para estructuras rápidas, CSS personalizado cuando es necesario, animaciones fluidas.
+
+✓ ENFOQUE: Prioriza código limpio, componentes reutilizables, rendimiento y experiencia visual atractiva.
+
+Construye sitios estáticos optimizados para servicios locales, dashboards con data visualization, y aplicaciones web complejas.`
     },
     {
       claves: ["backend", "servidor", "api", "node", "express", "logica", "java", "controlador", "servicios", "rest"],
-      respuesta: `En backend trabajo con Node.js y Express para construir APIs REST robustas, seguras y escalables. Además, desarrollé proyectos empresariales en Java conectados a bases de datos reales. Domino autenticación, validación de datos, lógica de negocio, envío de correos, integración con servicios externos (como Mercado Pago y WhatsApp Business), y arquitectura MVC.`
+      respuesta: `Gabriel es un backend developer sólido con experiencia en múltiples tecnologías y paradigmas:
+
+✓ NODE.JS & EXPRESS: Construye APIs REST robustas, seguras y escalables. Maneja autenticación, validación, lógica de negocio compleja.
+
+✓ JAVA EMPRESARIAL: Desarrolló sistemas complejos conectados a bases de datos reales (arquitectura MVC, controladores, servicios).
+
+✓ FUNCIONALIDADES AVANZADAS: Envío de correos automáticos, integración con APIs externas (Mercado Pago, WhatsApp Business), pagos online.
+
+✓ BASES DE DATOS: Diseño y optimización de esquemas, relaciones complejas, migraciones, consultas eficientes.
+
+✓ PRINCIPIOS: Código limpio, separación de responsabilidades, manejo robusto de errores, rendimiento optimizado.
+
+Su pensamiento es analítico: descompone problemas complejos y construye soluciones elegantes.`
     },
     {
       claves: ["base de datos", "bd", "persistencia", "modelado", "mysql", "mongodb", "postgres", "docker", "firestore", "sql", "nosql"],
@@ -18,13 +54,19 @@ const chatbotService = (() => {
     },
     {
       claves: ["proyectos", "experiencia", "trabajos", "portafolio", "hecho", "apps", "que proyectos", "que has hecho"],
-      respuesta: `Desarrollé sistemas completos como:
-- Una app de facturación automática con PDF + envío por WhatsApp usando Electron y Node.js.
-- Un sistema bancario completo en Java, con gestión de clientes, cuentas y movimientos conectados a MySQL.
-- Una app de turnos para consultorios médicos y peluquerías, integrada con WhatsApp.
-- Un sitio educativo sobre C++, shorts y cursos en video.
-- Bots inteligentes conectados a interfaces web, usando lógica de decisión propia.
-Todos incluyen control de versiones con Git y deploy profesional en la nube.`
+      respuesta: `Gabriel ha desarrollado múltiples sistemas a medida con enfoque profesional:
+
+✓ SISTEMAS DE GESTIÓN: Sistemas de ventas para supermercados, sistemas administrativos para consultorios médicos, herramientas para manejo de inventarios.
+
+✓ DASHBOARDS & PANELES: Paneles de control con métricas, dashboards interactivos con data visualization.
+
+✓ APLICACIONES ESPECIALIZADAS: Sistema de facturación con PDF y WhatsApp (Electron), app de turnos para consultorios/peluquerías, sistema bancario en Java, bots inteligentes.
+
+✓ FRONTEND: Sitios web institucionales, páginas orientadas a marketing y comunicación, aplicaciones web responsivas con Angular.
+
+✓ INFRAESTRUCTURA: Experiencia con Docker, monitoreos con Grafana y Prometheus, metodologías de gestión con Jira.
+
+Su enfoque es siempre el mismo: construir soluciones que combinen lógica, claridad y funcionalidad real.`
     },
     {
       claves: ["electron", "escritorio", "pdf", "whatsapp", "facturacion", "app local", "desktop"],
@@ -40,7 +82,17 @@ Todos incluyen control de versiones con Git y deploy profesional en la nube.`
     },
     {
       claves: ["educacion", "formacion", "estudios", "que estudiaste", "aprender", "carrera", "universidad"],
-      respuesta: `Estoy cursando una carrera en programación y redes, combinando formación académica con aprendizaje autodidacta. Mi formación no se limita a una institución: constantemente estudio documentación oficial, tutoriales avanzados, cursos específicos (como APIs de Mercado Pago, SEO avanzado, Docker, Angular), y resuelvo problemas reales para solidificar lo aprendido.`
+      respuesta: `Gabriel combinó aprendizaje académico con experiencia práctica. Estudió formalmente en una carrera de programación y redes, pero su verdadera educación vino de:
+
+✓ APRENDIZAJE AUTODIDACTA: Documentación oficial, tutoriales avanzados, cursos especializados (APIs de Mercado Pago, SEO avanzado, Docker, Angular).
+
+✓ EXPERIENCIA REAL: Resolviendo problemas reales en proyectos complejos, que solidifican el aprendizaje mejor que cualquier libro.
+
+✓ MENTALIDAD DE CRECIMIENTO: Entiende que en programación nunca se deja de aprender. La tecnología evoluciona constantemente y él está siempre actualizado.
+
+✓ PENSAMIENTO CRÍTICO: No solo aprende lo que le enseñan; cuestiona, experimenta y busca la mejor solución para cada caso.
+
+A los 22 años ya posee una madurez técnica excepcional gracias a esta combinación de formación y experiencia.`
     },
     {
       claves: ["docker", "contenedor", "ambiente", "postgresql", "infraestructura", "red", "virtualizacion"],
@@ -48,11 +100,19 @@ Todos incluyen control de versiones con Git y deploy profesional en la nube.`
     },
     {
       claves: ["trabajar", "equipo", "comunicacion", "soft skills", "colaborar", "git", "versionado"],
-      respuesta: `Me adapto bien al trabajo en equipo. Versiono con Git de forma clara, comento el código, documento decisiones técnicas y me comunico con precisión. También puedo trabajar de forma autónoma, tomando decisiones fundamentadas y priorizando la entrega funcional por sobre lo innecesario. Tengo mentalidad constructiva y orientada al resultado.`
+      respuesta: `Gabriel es una persona que sabe trabajar en equipo porque respeta las ideas de otros, comparte conocimiento sin ego y valora la colaboración. Pero también es perfectamente capaz de trabajar de forma independiente, organizándose y produciendo resultados sin supervisión.
+
+Su forma de trabajar es muy profesional: escucha, analiza, pregunta, planifica, ejecuta y revisa. No se limita a hacer lo que se le indica; siempre busca entender el propósito detrás del proyecto para construir algo que realmente funcione.
+
+Cualidades clave: Responsabilidad absoluta en todo compromiso, proactividad buscando mejoras constantemente, autodisciplina en la gestión del tiempo, pensamiento analítico para resolver problemas complejos, paciencia y persistencia ante dificultades, comunicación clara de conceptos técnicos, creatividad aplicada en soluciones.`
     },
     {
-      claves: ["quien sos", "tu nombre", "gabriel", "personal", "biografia", "sobre ti"],
-      respuesta: `Soy Gabriel, un programador fullstack autodidacta y estudiante de programación y redes. Me motiva resolver problemas reales con código, construir soluciones funcionales que ayuden a la gente, y aprender continuamente. Me gusta tanto el lado técnico como pensar en el producto final, el usuario y cómo destacar visual y funcionalmente en un proyecto.`
+      claves: ["quien sos", "tu nombre", "gabriel", "personal", "biografia", "sobre ti", "quien es gabriel"],
+      respuesta: `Soy Gabriel, un programador de 22 años apasionado por la tecnología y la creación de soluciones digitales que aporten valor real. Desde muy joven fui rodeado de computadoras, lo que despertó en mí una curiosidad profunda por entender cómo funcionan las cosas detrás de lo que vemos en pantalla.
+
+Me caracterizo por tener una capacidad notable para aprender rápidamente y aplicar conocimientos complejos de forma clara y orientada a resultados. Trabajo con un enfoque profesional distinguido por seriedad, constancia y disciplina. No solo escribo código: pienso, estructuro, mejoro y optimizo.
+
+Más allá de lo técnico, lo que me destaca son mis habilidades humanas: responsabilidad, proactividad, autodisciplina, pensamiento analítico, comunicación clara y creatividad aplicada. Disfruto el proceso de aprender y crear; para mí el código es una forma de expresión y una herramienta para materializar ideas.`
     },
     {
       claves: ["contacto", "contactar", "email", "linkedin", "github", "redes", "como contactar"],
@@ -115,7 +175,59 @@ Todos incluyen control de versiones con Git y deploy profesional en la nube.`
     {
       claves: ["ci/cd", "pipeline", "automatizacion", "deploy", "github actions"],
       respuesta: `Configuro pipelines de CI/CD para automatizar el deploy de mis aplicaciones. Uso GitHub Actions para builds automáticos y deploy en Vercel/Netlify. Esto asegura que los cambios se desplieguen de forma confiable y rápida sin intervención manual.`
-    }
+    },
+    {
+      claves: ["que lo hace especial", "por que contratarlo", "fortalezas", "ventajas", "diferente", "unico"],
+      respuesta: `Gabriel se destaca no solo por sus habilidades técnicas, sino por sus cualidades personales:
+
+✓ RESPONSABILIDAD ABSOLUTA: Siempre cumple con lo que promete, llevando cada proyecto hasta el final con dedicación.
+
+✓ PROACTIVIDAD: No espera instrucciones. Propone ideas, anticipa problemas y busca mejoras constantemente.
+
+✓ CLARIDAD: Explica conceptos técnicos complejos de forma sencilla, tanto a colegas como a clientes sin trasfondo técnico.
+
+✓ MADUREZ PROFESIONAL: A los 22 años muestra un enfoque sólido y preparado para enfrentar desafíos reales.
+
+✓ CREATIVIDAD APLICADA: No solo resuelve problemas, sino que crea soluciones más eficientes y elegantes.
+
+✓ PASIÓN GENUINA: Disfruta del proceso de aprender y crear. El código es para él una forma de expresión.
+
+Con Gabriel no solo contratas código: contratas una mentalidad de excelencia.`
+    },
+    {
+      claves: ["como aborda", "enfoque", "metodo", "proceso", "resuelve", "soluciona"],
+      respuesta: `Gabriel tiene un método de trabajo bien definido:
+
+1️⃣ ESCUCHA ACTIVA: Entiende completamente los objetivos antes de empezar.
+
+2️⃣ ANÁLISIS PROFUNDO: Descompone problemas complejos en partes pequeñas y manejables.
+
+3️⃣ PLANIFICACIÓN: Estructura la solución antes de escribir código, considerando escalabilidad y mantenibilidad.
+
+4️⃣ EJECUCIÓN DISCIPLINADA: Escribe código limpio, comentado y siguiendo principios SOLID.
+
+5️⃣ REVISIÓN CONTINUA: Prueba, optimiza y mejora hasta que la solución sea eficiente.
+
+6️⃣ DOCUMENTACIÓN: Deja todo bien documentado para que otros puedan entender y mantener el código.
+
+Su filosofía: La claridad es clave. Código limpio, diseño organizado y procesos bien pensados.`
+    },
+    {
+      claves: ["desafios", "dificultades", "errores", "que pasa cuando falla", "complicado"],
+      respuesta: `Gabriel ve los desafíos como oportunidades de aprendizaje:
+
+✓ PACIENCIA Y PERSISTENCIA: No se rinde ante errores o dificultades. Entiende que la programación es un proceso de ensayo y mejora constante.
+
+✓ DEBUGGING METÓDICO: Cuando algo no funciona, analiza sistemáticamente, busca el root cause y corrige desde la raíz.
+
+✓ RESILIENCIA: Los problemas complejos no lo desalientan. Los descompone lógicamente hasta encontrar la solución.
+
+✓ APRENDIZAJE DEL ERROR: Cada bug es una lección. No repite los mismos errores; mejora constantemente.
+
+✓ BUSCA AYUDA CUANDO ES NECESARIO: Es lo suficientemente maduro para saber que a veces necesita una segunda opinión o colaboración.
+
+Para Gabriel, "no sé cómo hacerlo" nunca es una limitación; es el comienzo de un aprendizaje.`
+    },
   ];
 
   function obtenerRespuesta(inputUsuario) {
