@@ -50,6 +50,8 @@
   <link rel="stylesheet" href="projects-styles.css">
   <!-- Navbar Moderno CSS -->
   <link rel="stylesheet" href="navbar-styles.css">
+  <!-- Carousel Destacado custom CSS -->
+  <link rel="stylesheet" href="carousel-destacado.css">
   <!-- Sistema de Temas Claro/Oscuro -->
   <link rel="stylesheet" href="theme-toggle.css">
 </head>
@@ -354,6 +356,9 @@
   </div>
 </section>
 
+  <!-- custom JS for carousel destacado -->
+  <script src="carousel-destacado.js"></script>
+
   <!-- Sección Tecnologías -->
   <section id="tecnologias" class="py-5 px-3 position-relative bg-dark bg-opacity-25">
   <div class="container py-5">
@@ -506,8 +511,8 @@
       <div class="col-12 col-md-10 col-lg-8">
         <div class="card bg-dark h-100 border-0 rounded-4 overflow-hidden shadow-lg project-card mx-auto">
           <div class="position-relative">
-            <!-- Carrusel de imágenes del sistema (más grande) -->
-            <div id="carouselDestacado" class="carousel slide" data-bs-ride="carousel">
+            <!-- Carrusel de imágenes del sistema (más grande) - usa carousel-destacado.js/css -->
+            <div id="carouselDestacado" class="carousel-destacado">
               <div class="carousel-inner rounded-4 overflow-hidden carousel-tall">
                 <div class="carousel-item active">
                   <img src="images/sistema odontologico.png" class="d-block w-100 project-img" loading="lazy" alt="Sistema Odontológico">
@@ -543,11 +548,12 @@
                   <img src="images/sistema 12.PNG" class="d-block w-100 project-img" loading="lazy" alt="Sistema Odontológico">
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestacado" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <!-- Custom controls (carousel-destacado.js binds these) -->
+              <button class="carousel-destacado-control carousel-destacado-prev" aria-label="Anterior">
+                <span class="fas fa-chevron-left" aria-hidden="true"></span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselDestacado" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <button class="carousel-destacado-control carousel-destacado-next" aria-label="Siguiente">
+                <span class="fas fa-chevron-right" aria-hidden="true"></span>
               </button>
             </div>
           </div>
