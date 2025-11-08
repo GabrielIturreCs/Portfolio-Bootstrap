@@ -127,6 +127,23 @@
   border: 2px solid rgba(0, 212, 255, 0.3);
 }
 
+/* Featured (destacado) carousel: same look as project cards but larger */
+#carouselDestacado .carousel-tall {
+  height: 520px; /* larger height for featured project */
+}
+
+@media (max-width: 992px) {
+  #carouselDestacado .carousel-tall {
+    height: 380px;
+  }
+}
+
+@media (max-width: 576px) {
+  #carouselDestacado .carousel-tall {
+    height: 260px;
+  }
+}
+
 .project-card:hover .carousel-control-prev,
 .project-card:hover .carousel-control-next {
   opacity: 1;
