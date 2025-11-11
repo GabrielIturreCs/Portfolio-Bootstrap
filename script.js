@@ -384,6 +384,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Ejecutar animación de letras
   animateHeadingLetters();
+
+  // Añadir clase 'revealed' a headings que usan la animación creativa una vez terminó la animación
+  (function markCreativeHeadingsRevealed() {
+    const creative = document.querySelectorAll('.animated-creative');
+    creative.forEach((el) => {
+      // cada letra tiene un delay de 0.04s en CSS y la animación dura 700ms
+      const letters = el.querySelectorAll('.letter').length || 0;
+      const stagger = 0.04; // s
+      const duration = 0.7; // s
+      const maxTime = letters > 0 ? (stagger * (letters - 1) + duration) : duration;
+      // añadir un pequeño buffer de 150ms
+      setTimeout(() => el.classList.add('revealed'), Math.round((maxTime + 0.15) * 1000));
+    });
+  })();
 });
 
 // ✅ ANIMACIÓN FADE-IN PARA CSS
