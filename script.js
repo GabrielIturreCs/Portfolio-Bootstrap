@@ -509,42 +509,52 @@ window.copyEmail = function(email) {
     }
   }
 
-  // Helper function to trigger Google Translate using the internal API
+  // Helper function to trigger Google Translate using the combo dropdown
   function triggerGoogleTranslate(lang) {
     try {
-      // Try to find and use the combo box if available
-      let selectElement = document.querySelector('.goog-te-combo');
+      console.log(`[Translation] Attempting to translate to ${lang}...`);
+      
+      // Try multiple selectors for the combo box (different versions of Google Translate may use different selectors)
+      const comboSelectors = [
+        '.goog-te-combo',
+        'select.goog-te-combo',
+        '.goog-te-gadget select'
+      ];
+      
+      let selectElement = null;
+      for (const selector of comboSelectors) {
+        selectElement = document.querySelector(selector);
+        if (selectElement) {
+          console.log(`[Translation] Found combo using selector: ${selector}`);
+          break;
+        }
+      }
+      
       if (selectElement) {
+        // Set the value and dispatch change event multiple times for reliability
         selectElement.value = lang;
-        selectElement.dispatchEvent(new Event('change'));
-        console.log(`[Translation] Translated using combo to ${lang}`);
+        selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+        selectElement.dispatchEvent(new Event('input', { bubbles: true }));
+        console.log(`[Translation] ✅ Translated using combo dropdown to ${lang}`);
         return;
       }
 
-      // If combo not found, try using google.translate.TranslateElement's method
-      if (window.google && window.google.translate && window.google.translate.TranslateElement) {
-        // Access the page translator instance
-        let pageTranslatorInstance = window.google.translate.TranslateElement.getInstance();
-        if (pageTranslatorInstance) {
-          pageTranslatorInstance.setPageLanguagePair('es', lang);
-          console.log(`[Translation] Translated using API to ${lang}`);
-          return;
-        }
-      }
-
-      // Last resort: try clicking the combo if it exists but we couldn't find it by selector
+      // If still not found, retry with delay in case Google Translate is still loading
+      console.log('[Translation] Combo not found yet, retrying in 800ms...');
       setTimeout(() => {
-        const combo = document.querySelector('.goog-te-combo');
-        if (combo) {
-          combo.value = lang;
-          combo.dispatchEvent(new Event('change'));
-          console.log(`[Translation] Translated (retry) to ${lang}`);
+        const comboRetry = document.querySelector('.goog-te-combo');
+        if (comboRetry) {
+          comboRetry.value = lang;
+          comboRetry.dispatchEvent(new Event('change', { bubbles: true }));
+          comboRetry.dispatchEvent(new Event('input', { bubbles: true }));
+          console.log(`[Translation] ✅ Translated (delayed retry) to ${lang}`);
         } else {
-          console.warn('[Translation] Could not find Google Translate combo or API');
+          console.warn('[Translation] ⚠️ Combo dropdown still not found after retry. Google Translate may not be available in this context.');
+          console.warn('[Translation] Try enabling the visible Google Translate widget or using a different approach.');
         }
-      }, 500);
+      }, 800);
     } catch (e) {
-      console.warn('[Translation] Error during translation:', e);
+      console.error('[Translation] ❌ Error during translation:', e);
     }
   }
 
