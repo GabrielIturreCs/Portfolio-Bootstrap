@@ -457,16 +457,70 @@ window.copyEmail = function(email) {
   // -----------------------------
   // Language switch (loads JSON from /i18n/*.json)
   // - Expects files like `i18n/en.json` and `i18n/es.json`.
-  // ✅ SMARTCAT TRANSLATION INTEGRATION
-  // - Automatic full-page translation using SmartCat API
+  // ✅ LIBRETR​ANSLATE TRANSLATION INTEGRATION
+  // - Uses LibreTranslate API (free, open-source, no API key needed)
   // - Spanish (es) is default; click EN to translate to English
-  // - SmartCat script loads automatically from CDN
+  // - Translates all text nodes in the DOM
   // -----
   let currentLang = 'es';
   const langButtons = document.querySelectorAll('.btn-lang');
+  const translationCache = {}; // Cache to avoid re-translating same text
+
+  // Get all text nodes that need translation
+  function getAllTextNodes(element = document.body) {
+    const textNodes = [];
+    const walk = document.createTreeWalker(
+      element,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    let node;
+    while (node = walk.nextNode()) {
+      const text = node.textContent.trim();
+      // Only include non-empty text nodes that aren't just whitespace
+      if (text && text.length > 0 && text.length < 500) {
+        textNodes.push(node);
+      }
+    }
+    return textNodes;
+  }
+
+  // Translate text using LibreTranslate API
+  async function translateText(text, targetLang) {
+    if (translationCache[text]) {
+      return translationCache[text];
+    }
+    
+    try {
+      const res = await fetch("https://libretranslate.com/translate", {
+        method: "POST",
+        body: JSON.stringify({
+          q: text,
+          source: "es",
+          target: targetLang === 'en' ? 'en' : 'es',
+          format: "text"
+        }),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (!res.ok) {
+        console.warn('[Translation] API error:', res.status);
+        return text;
+      }
+
+      const data = await res.json();
+      const translated = data.translatedText || text;
+      translationCache[text] = translated;
+      return translated;
+    } catch (error) {
+      console.warn('[Translation] Error translating text:', error);
+      return text;
+    }
+  }
 
   // Main translation function
-  window.translatePageTo = function(lang) {
+  window.translatePageTo = async function(lang) {
     currentLang = lang;
     
     // Update button active states
@@ -478,19 +532,33 @@ window.copyEmail = function(email) {
 
     // For Spanish, reload to reset to original
     if (lang === 'es') {
-      console.log('[Translation] Reloading to Spanish');
+      console.log('[Translation] 🇦🇷 Reloading to Spanish');
       location.reload();
       return;
     }
 
-    // For English, SmartCat will handle automatically via its widget/iframe
+    // For English, translate all text nodes
     if (lang === 'en') {
-      console.log('[Translation] ℹ️ SmartCat widget should handle translation automatically');
-      console.log('[Translation] If translation does not appear, SmartCat may not be available in this environment');
+      console.log('[Translation] 🇺🇸 Starting translation to English...');
       
-      // SmartCat should auto-translate when its script is loaded
-      // The SmartCat script from CDN handles page translation silently
-      // No manual API call needed - it works via its internal mechanism
+      // Show loading indicator
+      const button = document.getElementById('lang-en');
+      if (button) button.style.opacity = '0.5';
+      
+      const textNodes = getAllTextNodes();
+      let translated = 0;
+      
+      for (const node of textNodes) {
+        const original = node.textContent;
+        const newText = await translateText(original, 'en');
+        if (newText !== original) {
+          node.textContent = newText;
+          translated++;
+        }
+      }
+      
+      if (button) button.style.opacity = '1';
+      console.log(`[Translation] ✅ Translated ${translated}/${textNodes.length} text segments`);
     }
   };
 
