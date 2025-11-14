@@ -464,78 +464,6 @@ window.copyEmail = function(email) {
   // -----
   let currentLang = 'es';
   const langButtons = document.querySelectorAll('.btn-lang');
-  let smartcatReady = false;
-  let smartcatWaitCount = 0;
-
-  // Function to attempt translation with SmartCat
-  function attemptSmartCatTranslation(lang, attempt = 1) {
-    const maxAttempts = 15; // Try up to 15 times (15 seconds)
-    
-    // Check multiple possible SmartCat APIs
-    if (window.SmartCat) {
-      console.log('[Translation] SmartCat object found, attempt', attempt);
-      
-      // Try TranslateManager
-      if (window.SmartCat.TranslateManager && window.SmartCat.TranslateManager.setPageLanguage) {
-        try {
-          window.SmartCat.TranslateManager.setPageLanguage(lang);
-          console.log(`[Translation] ✅ Translated to ${lang} using SmartCat.TranslateManager`);
-          smartcatReady = true;
-          return true;
-        } catch (e) {
-          console.warn('[Translation] SmartCat.TranslateManager error:', e.message);
-        }
-      }
-      
-      // Try TranslateElement
-      if (window.SmartCat.TranslateElement && window.SmartCat.TranslateElement.setPageLanguage) {
-        try {
-          window.SmartCat.TranslateElement.setPageLanguage(lang);
-          console.log(`[Translation] ✅ Translated to ${lang} using SmartCat.TranslateElement`);
-          smartcatReady = true;
-          return true;
-        } catch (e) {
-          console.warn('[Translation] SmartCat.TranslateElement error:', e.message);
-        }
-      }
-      
-      // Try direct method
-      if (window.SmartCat.setPageLanguage && typeof window.SmartCat.setPageLanguage === 'function') {
-        try {
-          window.SmartCat.setPageLanguage(lang);
-          console.log(`[Translation] ✅ Translated to ${lang} using SmartCat.setPageLanguage`);
-          smartcatReady = true;
-          return true;
-        } catch (e) {
-          console.warn('[Translation] SmartCat.setPageLanguage error:', e.message);
-        }
-      }
-    }
-    
-    // Check global smartcat function
-    if (typeof window.smartcat_translate === 'function') {
-      try {
-        window.smartcat_translate(lang);
-        console.log(`[Translation] ✅ Translated to ${lang} using smartcat_translate()`);
-        smartcatReady = true;
-        return true;
-      } catch (e) {
-        console.warn('[Translation] smartcat_translate error:', e.message);
-      }
-    }
-    
-    // Retry logic
-    if (attempt < maxAttempts) {
-      console.log(`[Translation] SmartCat not ready yet, retrying in 1s... (${attempt}/${maxAttempts})`);
-      setTimeout(() => {
-        attemptSmartCatTranslation(lang, attempt + 1);
-      }, 1000);
-      return false;
-    } else {
-      console.error('[Translation] ❌ SmartCat failed after', maxAttempts, 'attempts');
-      return false;
-    }
-  }
 
   // Main translation function
   window.translatePageTo = function(lang) {
@@ -550,14 +478,19 @@ window.copyEmail = function(email) {
 
     // For Spanish, reload to reset to original
     if (lang === 'es') {
+      console.log('[Translation] Reloading to Spanish');
       location.reload();
       return;
     }
 
-    // For English, try SmartCat
+    // For English, SmartCat will handle automatically via its widget/iframe
     if (lang === 'en') {
-      console.log('[Translation] Translation request for English');
-      attemptSmartCatTranslation('en');
+      console.log('[Translation] ℹ️ SmartCat widget should handle translation automatically');
+      console.log('[Translation] If translation does not appear, SmartCat may not be available in this environment');
+      
+      // SmartCat should auto-translate when its script is loaded
+      // The SmartCat script from CDN handles page translation silently
+      // No manual API call needed - it works via its internal mechanism
     }
   };
 
