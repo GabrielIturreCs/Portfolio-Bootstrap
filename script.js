@@ -464,8 +464,80 @@ window.copyEmail = function(email) {
   // -----
   let currentLang = 'es';
   const langButtons = document.querySelectorAll('.btn-lang');
+  let smartcatReady = false;
+  let smartcatWaitCount = 0;
 
-  // SmartCat automatically exposes window.SmartCat when ready
+  // Function to attempt translation with SmartCat
+  function attemptSmartCatTranslation(lang, attempt = 1) {
+    const maxAttempts = 15; // Try up to 15 times (15 seconds)
+    
+    // Check multiple possible SmartCat APIs
+    if (window.SmartCat) {
+      console.log('[Translation] SmartCat object found, attempt', attempt);
+      
+      // Try TranslateManager
+      if (window.SmartCat.TranslateManager && window.SmartCat.TranslateManager.setPageLanguage) {
+        try {
+          window.SmartCat.TranslateManager.setPageLanguage(lang);
+          console.log(`[Translation] ✅ Translated to ${lang} using SmartCat.TranslateManager`);
+          smartcatReady = true;
+          return true;
+        } catch (e) {
+          console.warn('[Translation] SmartCat.TranslateManager error:', e.message);
+        }
+      }
+      
+      // Try TranslateElement
+      if (window.SmartCat.TranslateElement && window.SmartCat.TranslateElement.setPageLanguage) {
+        try {
+          window.SmartCat.TranslateElement.setPageLanguage(lang);
+          console.log(`[Translation] ✅ Translated to ${lang} using SmartCat.TranslateElement`);
+          smartcatReady = true;
+          return true;
+        } catch (e) {
+          console.warn('[Translation] SmartCat.TranslateElement error:', e.message);
+        }
+      }
+      
+      // Try direct method
+      if (window.SmartCat.setPageLanguage && typeof window.SmartCat.setPageLanguage === 'function') {
+        try {
+          window.SmartCat.setPageLanguage(lang);
+          console.log(`[Translation] ✅ Translated to ${lang} using SmartCat.setPageLanguage`);
+          smartcatReady = true;
+          return true;
+        } catch (e) {
+          console.warn('[Translation] SmartCat.setPageLanguage error:', e.message);
+        }
+      }
+    }
+    
+    // Check global smartcat function
+    if (typeof window.smartcat_translate === 'function') {
+      try {
+        window.smartcat_translate(lang);
+        console.log(`[Translation] ✅ Translated to ${lang} using smartcat_translate()`);
+        smartcatReady = true;
+        return true;
+      } catch (e) {
+        console.warn('[Translation] smartcat_translate error:', e.message);
+      }
+    }
+    
+    // Retry logic
+    if (attempt < maxAttempts) {
+      console.log(`[Translation] SmartCat not ready yet, retrying in 1s... (${attempt}/${maxAttempts})`);
+      setTimeout(() => {
+        attemptSmartCatTranslation(lang, attempt + 1);
+      }, 1000);
+      return false;
+    } else {
+      console.error('[Translation] ❌ SmartCat failed after', maxAttempts, 'attempts');
+      return false;
+    }
+  }
+
+  // Main translation function
   window.translatePageTo = function(lang) {
     currentLang = lang;
     
@@ -476,43 +548,16 @@ window.copyEmail = function(email) {
       btn.classList.toggle('lang-active', isActive);
     });
 
-    // For Spanish, just reload the page to reset to original
+    // For Spanish, reload to reset to original
     if (lang === 'es') {
       location.reload();
       return;
     }
 
-    // For English, use SmartCat's translation API
+    // For English, try SmartCat
     if (lang === 'en') {
-      try {
-        // SmartCat script automatically initializes and provides translation methods
-        // Check if SmartCat is available
-        if (window.SmartCat && window.SmartCat.TranslateManager) {
-          // Use SmartCat's built-in translation manager
-          window.SmartCat.TranslateManager.setPageLanguage('en');
-          console.log('[Translation] ✅ Page translated to English using SmartCat');
-        } else if (typeof __smartcat_translate === 'function') {
-          // Alternative SmartCat API method
-          __smartcat_translate('en');
-          console.log('[Translation] ✅ Page translated to English using SmartCat API');
-        } else {
-          console.warn('[Translation] SmartCat API not yet available, waiting...');
-          // Wait a moment and try again
-          setTimeout(() => {
-            if (window.SmartCat && window.SmartCat.TranslateManager) {
-              window.SmartCat.TranslateManager.setPageLanguage('en');
-              console.log('[Translation] ✅ Page translated to English (delayed)');
-            } else if (typeof __smartcat_translate === 'function') {
-              __smartcat_translate('en');
-              console.log('[Translation] ✅ Page translated using SmartCat API (delayed)');
-            } else {
-              console.warn('[Translation] ⚠️ SmartCat still not available');
-            }
-          }, 1000);
-        }
-      } catch (e) {
-        console.error('[Translation] ❌ Error during translation:', e);
-      }
+      console.log('[Translation] Translation request for English');
+      attemptSmartCatTranslation('en');
     }
   };
 
