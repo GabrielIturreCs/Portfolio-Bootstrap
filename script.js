@@ -457,108 +457,15 @@ window.copyEmail = function(email) {
   // -----------------------------
   // Language switch (loads JSON from /i18n/*.json)
   // - Expects files like `i18n/en.json` and `i18n/es.json`.
-  // ✅ GOOGLE TRANSLATE INTEGRATION
-  // - Automatic full-page translation without visible widget
+  // ✅ SMARTCAT TRANSLATION INTEGRATION
+  // - Automatic full-page translation using SmartCat API
   // - Spanish (es) is default; click EN to translate to English
-  // - No custom JSON files or localStorage needed
+  // - SmartCat script loads automatically from CDN
   // -----
   let currentLang = 'es';
   const langButtons = document.querySelectorAll('.btn-lang');
-  let googleTranslateInitialized = false;
 
-  // Initialize Google Translate script (loads once)
-  function initGoogleTranslate() {
-    if (googleTranslateInitialized) return;
-    googleTranslateInitialized = true;
-
-    const script = document.createElement('script');
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    script.async = true;
-
-    window.googleTranslateElementInit = function() {
-      try {
-        new google.translate.TranslateElement({
-          pageLanguage: 'es',
-          includedLanguages: 'en',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-        console.log('[Translation] Google Translate initialized successfully');
-      } catch (e) {
-        console.warn('Error initializing Google Translate:', e);
-      }
-    };
-
-    document.body.appendChild(script);
-  }
-
-  // Function to trigger translation using Google's internal API
-  function performTranslation(lang) {
-    if (lang === 'es') {
-      // Reset to Spanish by reloading page
-      location.reload();
-      return;
-    }
-
-    // For English, init Google Translate if needed
-    if (!googleTranslateInitialized) {
-      initGoogleTranslate();
-      // Give it time to load before attempting translation
-      setTimeout(() => triggerGoogleTranslate('en'), 1500);
-    } else {
-      triggerGoogleTranslate('en');
-    }
-  }
-
-  // Helper function to trigger Google Translate using the combo dropdown
-  function triggerGoogleTranslate(lang) {
-    try {
-      console.log(`[Translation] Attempting to translate to ${lang}...`);
-      
-      // Try multiple selectors for the combo box (different versions of Google Translate may use different selectors)
-      const comboSelectors = [
-        '.goog-te-combo',
-        'select.goog-te-combo',
-        '.goog-te-gadget select'
-      ];
-      
-      let selectElement = null;
-      for (const selector of comboSelectors) {
-        selectElement = document.querySelector(selector);
-        if (selectElement) {
-          console.log(`[Translation] Found combo using selector: ${selector}`);
-          break;
-        }
-      }
-      
-      if (selectElement) {
-        // Set the value and dispatch change event multiple times for reliability
-        selectElement.value = lang;
-        selectElement.dispatchEvent(new Event('change', { bubbles: true }));
-        selectElement.dispatchEvent(new Event('input', { bubbles: true }));
-        console.log(`[Translation] ✅ Translated using combo dropdown to ${lang}`);
-        return;
-      }
-
-      // If still not found, retry with delay in case Google Translate is still loading
-      console.log('[Translation] Combo not found yet, retrying in 800ms...');
-      setTimeout(() => {
-        const comboRetry = document.querySelector('.goog-te-combo');
-        if (comboRetry) {
-          comboRetry.value = lang;
-          comboRetry.dispatchEvent(new Event('change', { bubbles: true }));
-          comboRetry.dispatchEvent(new Event('input', { bubbles: true }));
-          console.log(`[Translation] ✅ Translated (delayed retry) to ${lang}`);
-        } else {
-          console.warn('[Translation] ⚠️ Combo dropdown still not found after retry. Google Translate may not be available in this context.');
-          console.warn('[Translation] Try enabling the visible Google Translate widget or using a different approach.');
-        }
-      }, 800);
-    } catch (e) {
-      console.error('[Translation] ❌ Error during translation:', e);
-    }
-  }
-
-  // Attach click handlers to language buttons
+  // SmartCat automatically exposes window.SmartCat when ready
   window.translatePageTo = function(lang) {
     currentLang = lang;
     
@@ -569,7 +476,44 @@ window.copyEmail = function(email) {
       btn.classList.toggle('lang-active', isActive);
     });
 
-    performTranslation(lang);
+    // For Spanish, just reload the page to reset to original
+    if (lang === 'es') {
+      location.reload();
+      return;
+    }
+
+    // For English, use SmartCat's translation API
+    if (lang === 'en') {
+      try {
+        // SmartCat script automatically initializes and provides translation methods
+        // Check if SmartCat is available
+        if (window.SmartCat && window.SmartCat.TranslateManager) {
+          // Use SmartCat's built-in translation manager
+          window.SmartCat.TranslateManager.setPageLanguage('en');
+          console.log('[Translation] ✅ Page translated to English using SmartCat');
+        } else if (typeof __smartcat_translate === 'function') {
+          // Alternative SmartCat API method
+          __smartcat_translate('en');
+          console.log('[Translation] ✅ Page translated to English using SmartCat API');
+        } else {
+          console.warn('[Translation] SmartCat API not yet available, waiting...');
+          // Wait a moment and try again
+          setTimeout(() => {
+            if (window.SmartCat && window.SmartCat.TranslateManager) {
+              window.SmartCat.TranslateManager.setPageLanguage('en');
+              console.log('[Translation] ✅ Page translated to English (delayed)');
+            } else if (typeof __smartcat_translate === 'function') {
+              __smartcat_translate('en');
+              console.log('[Translation] ✅ Page translated using SmartCat API (delayed)');
+            } else {
+              console.warn('[Translation] ⚠️ SmartCat still not available');
+            }
+          }, 1000);
+        }
+      } catch (e) {
+        console.error('[Translation] ❌ Error during translation:', e);
+      }
+    }
   };
 
 // ✅ CHATBOT - ABRIR/CERRAR VENTANA
