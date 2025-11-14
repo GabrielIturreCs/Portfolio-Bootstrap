@@ -139,7 +139,7 @@ p,
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 4s steps(22, end) infinite;
+  animation: typing 4.5s steps(25, end) infinite;
 }
 
 .typing-cursor {
