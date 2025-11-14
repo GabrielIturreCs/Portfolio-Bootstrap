@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; script-src 'self' https: 'unsafe-inline' 'unsafe-eval' translate.google.com; img-src 'self' https: data:;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Portafolio profesional de Gabriel Iturre, desarrollador full stack especializado en crear interfaces web dinámicas, intuitivas y visualmente atractivas con experiencia en Angular, TypeScript y Node.js">
   <meta name="keywords" content="desarrollo web, frontend, backend, full stack, Gabriel Iturre, HTML, CSS, JavaScript, Angular, TypeScript, Node.js">
@@ -73,7 +73,7 @@
           </div>
           <div class="brand-text">
             <span class="brand-name">Gabriel</span>
-            <span class="brand-title">Full Stack Developer</span>
+            <span class="brand-title">Desarrollador Full Stack</span>
           </div>
         </a>
         
@@ -137,9 +137,16 @@
               </a>
             </li>
             <li class="nav-item ms-2">
-              <button id="navbarThemeToggle" class="btn btn-outline-primary theme-btn-navbar" title="Cambiar tema">
-                <i class="fas fa-sun"></i>
-              </button>
+              <div class="d-flex align-items-center gap-2">
+                <button id="navbarThemeToggle" class="btn btn-outline-primary theme-btn-navbar" title="Cambiar tema">
+                  <i class="fas fa-sun"></i>
+                </button>
+                <!-- Google Translate language buttons -->
+                <div class="d-flex align-items-center lang-switch" role="group" aria-label="Language selection">
+                  <button class="btn btn-sm btn-lang lang-active" onclick="translatePageTo('es')" title="Español" id="lang-es">🇦🇷</button>
+                  <button class="btn btn-sm btn-lang" onclick="translatePageTo('en')" title="English" id="lang-en">🇺🇸</button>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -173,7 +180,7 @@
             <!-- Título con animación de escritura -->
             <div class="mb-5">
               <p class="fs-4 text-light-emphasis fw-medium">
-                <span class="typing-text"><span class="text-primary">Full Stack</span> Developer</span>
+                <span class="typing-text"><span class="text-primary">Desarrollador</span> Full Stack</span>
               </p>
             </div>
             
@@ -259,7 +266,7 @@
 <section id="misvideos" class="py-5 px-3 position-relative">
   <div class="container py-5">
     <div class="text-center mb-5" data-aos="fade-up">
-      <h2 class="display-5 fw-bold mb-3">Mis Últimos <span class="text-primary">Videos</span></h2>
+  <h2 class="display-5 fw-bold mb-3">Mis Últimos <span class="text-primary">Videos</span></h2>
       <div class="divider-custom mx-auto"></div>
       <p class="text-light-emphasis mx-auto max-width-700">
         Comparto mi conocimiento a través de tutoriales y explicaciones sobre desarrollo web, programación y tecnologías actuales.
@@ -363,7 +370,7 @@
   <section id="tecnologias" class="py-5 px-3 position-relative bg-dark bg-opacity-25">
   <div class="container py-5">
     <div class="text-center mb-5" data-aos="fade-up">
-      <h2 class="display-5 fw-bold mb-3 animated-heading">Mis <span class="text-primary">Tecnologías</span></h2>
+  <h2 class="display-5 fw-bold mb-3 animated-heading">Mis <span class="text-primary">Tecnologías</span></h2>
       <div class="divider-custom mx-auto"></div>
     </div>
 
@@ -501,7 +508,7 @@
  <section id="proyecto-destacado" class="py-5 px-3 position-relative">
   <div class="container py-5">
     <div class="text-center mb-5" data-aos="fade-up">
-      <h2 class="display-4 fw-bold mb-3">Proyecto <span class="text-primary">Destacado</span></h2>
+  <h2 class="display-4 fw-bold mb-3">Proyecto <span class="text-primary">Destacado</span></h2>
       <div class="divider-custom mx-auto"></div>
       <p class="text-light-emphasis mx-auto max-width-700">
         Este es el proyecto grupal más completo y desafiante en el que he trabajado, integrando frontend, backend, autenticación, pagos y chatbot inteligente.
@@ -2665,6 +2672,9 @@
       });
     });
   </script>
+
+  <!-- Google Translate container (hidden, for script initialization) -->
+  <div id="google_translate_element" style="display:none;"></div>
 
 </body>
 </html>

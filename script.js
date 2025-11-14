@@ -384,20 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Ejecutar animación de letras
   animateHeadingLetters();
-
-  // Añadir clase 'revealed' a headings que usan la animación creativa una vez terminó la animación
-  (function markCreativeHeadingsRevealed() {
-    const creative = document.querySelectorAll('.animated-creative');
-    creative.forEach((el) => {
-      // cada letra tiene un delay de 0.04s en CSS y la animación dura 700ms
-      const letters = el.querySelectorAll('.letter').length || 0;
-      const stagger = 0.04; // s
-      const duration = 0.7; // s
-      const maxTime = letters > 0 ? (stagger * (letters - 1) + duration) : duration;
-      // añadir un pequeño buffer de 150ms
-      setTimeout(() => el.classList.add('revealed'), Math.round((maxTime + 0.15) * 1000));
-    });
-  })();
 });
 
 // ✅ ANIMACIÓN FADE-IN PARA CSS
@@ -467,6 +453,90 @@ window.copyEmail = function(email) {
     });
   }
 })();
+
+  // -----------------------------
+  // Language switch (loads JSON from /i18n/*.json)
+  // - Expects files like `i18n/en.json` and `i18n/es.json`.
+  // ✅ GOOGLE TRANSLATE INTEGRATION
+  // - Automatic full-page translation without visible widget
+  // - Spanish (es) is default; click EN to translate to English
+  // - No custom JSON files or localStorage needed
+  // -----
+  let currentLang = 'es';
+  const langButtons = document.querySelectorAll('.btn-lang');
+  let googleTranslateInitialized = false;
+
+  // Initialize Google Translate script (loads once)
+  function initGoogleTranslate() {
+    if (googleTranslateInitialized) return;
+    googleTranslateInitialized = true;
+
+    const script = document.createElement('script');
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+
+    window.googleTranslateElementInit = function() {
+      try {
+        new google.translate.TranslateElement({
+          pageLanguage: 'es',
+          includedLanguages: 'en',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      } catch (e) {
+        console.warn('Error initializing Google Translate:', e);
+      }
+    };
+
+    document.body.appendChild(script);
+  }
+
+  // Function to trigger translation
+  function performTranslation(lang) {
+    if (lang === 'es') {
+      // Reset to Spanish by reloading page
+      location.reload();
+      return;
+    }
+
+    // For English, init Google Translate if needed
+    if (!googleTranslateInitialized) {
+      initGoogleTranslate();
+    }
+
+    // Give Google Translate time to initialize, then trigger translation
+    setTimeout(() => {
+      const selectElement = document.querySelector('.goog-te-combo');
+      if (selectElement) {
+        selectElement.value = 'en';
+        selectElement.dispatchEvent(new Event('change'));
+        console.log('[Translation] Switched to English');
+      } else {
+        console.warn('[Translation] Google Translate combo not found yet');
+        // Retry after another delay
+        setTimeout(() => {
+          const select = document.querySelector('.goog-te-combo');
+          if (select) {
+            select.value = 'en';
+            select.dispatchEvent(new Event('change'));
+          }
+        }, 1000);
+      }
+    }, 500);
+  }
+
+  // Attach click handlers to language buttons
+  window.translatePageTo = function(lang) {
+    currentLang = lang;
+    
+    // Update button active states
+    langButtons.forEach(btn => {
+      const isActive = (lang === 'es' && btn.id === 'lang-es') || 
+                       (lang === 'en' && btn.id === 'lang-en');
+      btn.classList.toggle('lang-active', isActive);
+    });
+
+    performTranslation(lang);
+  };
 
 // ✅ CHATBOT - ABRIR/CERRAR VENTANA
 (function() {
