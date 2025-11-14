@@ -482,12 +482,35 @@ window.copyEmail = function(email) {
           includedLanguages: 'en',
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE
         }, 'google_translate_element');
+        console.log('[Translation] Google Translate initialized successfully');
       } catch (e) {
         console.warn('Error initializing Google Translate:', e);
       }
     };
 
     document.body.appendChild(script);
+  }
+
+  // Helper function to attempt translation with retries
+  function attemptTranslation(lang, retries = 5) {
+    if (retries <= 0) {
+      console.warn('[Translation] Failed to find Google Translate combo after retries');
+      return;
+    }
+
+    const selectElement = document.querySelector('.goog-te-combo');
+    if (selectElement) {
+      try {
+        selectElement.value = lang;
+        selectElement.dispatchEvent(new Event('change'));
+        console.log(`[Translation] Successfully switched to ${lang}`);
+      } catch (e) {
+        console.warn(`[Translation] Error triggering translation:`, e);
+      }
+    } else {
+      console.log(`[Translation] Combo not found, retrying... (${retries} attempts left)`);
+      setTimeout(() => attemptTranslation(lang, retries - 1), 300);
+    }
   }
 
   // Function to trigger translation
@@ -501,27 +524,12 @@ window.copyEmail = function(email) {
     // For English, init Google Translate if needed
     if (!googleTranslateInitialized) {
       initGoogleTranslate();
+      // Give it time to load before attempting translation
+      setTimeout(() => attemptTranslation('en'), 1000);
+    } else {
+      // If already initialized, just change the combo
+      attemptTranslation('en');
     }
-
-    // Give Google Translate time to initialize, then trigger translation
-    setTimeout(() => {
-      const selectElement = document.querySelector('.goog-te-combo');
-      if (selectElement) {
-        selectElement.value = 'en';
-        selectElement.dispatchEvent(new Event('change'));
-        console.log('[Translation] Switched to English');
-      } else {
-        console.warn('[Translation] Google Translate combo not found yet');
-        // Retry after another delay
-        setTimeout(() => {
-          const select = document.querySelector('.goog-te-combo');
-          if (select) {
-            select.value = 'en';
-            select.dispatchEvent(new Event('change'));
-          }
-        }, 1000);
-      }
-    }, 500);
   }
 
   // Attach click handlers to language buttons
