@@ -12498,6 +12498,85 @@ a:hover {
   font-family: 'Poppins', sans-serif;
 }
 
+/* ========== ABOUT ME SECTION STYLES ========== */
+#misvideos {
+  background: linear-gradient(135deg, rgba(4, 13, 33, 0.5) 0%, rgba(4, 13, 33, 0.3) 100%);
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+#misvideos .pe-lg-4 {
+  padding-right: 2rem !important;
+}
+
+#misvideos .fs-5 {
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+#misvideos .fs-5 + .fs-5 {
+  margin-top: 1.5rem;
+}
+
+#misvideos .d-flex.flex-wrap {
+  gap: 1.5rem;
+}
+
+#misvideos .d-flex.gap-2 {
+  align-items: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#misvideos .fa-check-circle {
+  color: #00d4ff;
+  flex-shrink: 0;
+}
+
+#misvideos .ratio {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(13, 110, 253, 0.1) 100%);
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+#misvideos .ratio:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+#misvideos .ratio iframe {
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  #misvideos .pe-lg-4 {
+    padding-right: 0 !important;
+    margin-bottom: 2rem;
+  }
+  
+  #misvideos .fs-5 {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #misvideos .d-flex.flex-wrap {
+    gap: 1rem;
+    flex-direction: column;
+  }
+  
+  #misvideos .fs-5 {
+    font-size: 1rem !important;
+  }
+  
+  #misvideos .ratio {
+    margin-top: 1.5rem;
+  }
+}
+
 /* Make sure animations don't overwhelm mobile */
 @media (max-width: 576px) {
   .education-title { animation: none; }

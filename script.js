@@ -475,7 +475,7 @@ window.copyEmail = function(email) {
       // ========== NAVBAR - Navigation Links ==========
       "nav-sobremi": "Sobre Mí",
       "nav-inicio": "Inicio",
-      "nav-videos": "Videos",
+      "nav-about": "Sobre mi",
       "nav-tecnologias": "Tecnologías",
       "nav-proyectos": "Proyectos",
       "nav-educacion": "Educación",
@@ -523,9 +523,15 @@ window.copyEmail = function(email) {
       "odonto-code": "Código",
       "odonto-contributors": "Colaboradores",
       
-      // ========== VIDEOS SECTION - Latest Videos ==========
-      "videos-title": "Mis Últimos Videos",
-      "videos-description": "Comparto mi conocimiento a través de tutoriales y explicaciones sobre desarrollo web, programación y tecnologías actuales.",
+      // ========== ABOUT SECTION - About Me ==========
+      "about-title": "Sobre mi",
+      "about-intro": "Soy un desarrollador Full Stack enfocado en construir soluciones simples, eficientes y útiles. Me formé combinando estudio autodidacta y formación académica, y aprendí a transformar ideas en aplicaciones concretas que resuelven problemas del día a día.",
+      "about-tech": "Trabajo principalmente con Angular, Node.js, MySQL y Docker. Aprendo rápido, me adapto rápido y soy muy riguroso con la calidad: código limpio, mantenible y sin complicaciones innecesarias.",
+      "about-goal": "Busco integrarme a un equipo donde pueda aportar valor real, seguir creciendo profesionalmente y participar en proyectos que tengan impacto y sentido.",
+      "about-skill-1": "Código limpio y mantenible",
+      "about-skill-2": "Aprendizaje continuo",
+      "about-skill-3": "Resolución de problemas",
+      "footer-about": "Sobre mi",
       "video-1-title": "Cómo Instalar Bootstrap en Angular 19 en Minutos ✅",
       "video-1-date": "Publicado: 12 de mayo, 2025",
       "video-1-desc": "Aprendé a integrar Bootstrap en Angular 19 sin errores y con tips reales para developers. Creá interfaces limpias y responsivas en minutos.",
@@ -737,7 +743,7 @@ window.copyEmail = function(email) {
       // ========== NAVBAR - Navigation Links ==========
       "nav-sobremi": "About Me",
       "nav-inicio": "Home",
-      "nav-videos": "Videos",
+      "nav-about": "About Me",
       "nav-tecnologias": "Technologies",
       "nav-proyectos": "Projects",
       "nav-educacion": "Education",
@@ -785,9 +791,15 @@ window.copyEmail = function(email) {
       "odonto-code": "Code",
       "odonto-contributors": "Contributors",
       
-      // ========== VIDEOS SECTION - Latest Videos ==========
-      "videos-title": "My Latest Videos",
-      "videos-description": "I share my knowledge through tutorials and explanations on web development, programming and current technologies.",
+      // ========== ABOUT SECTION - About Me ==========
+      "about-title": "About Me",
+      "about-intro": "I'm a Full Stack developer focused on building simple, efficient and useful solutions. I trained by combining self-taught study and academic training, and I learned to transform ideas into concrete applications that solve everyday problems.",
+      "about-tech": "I work primarily with Angular, Node.js, MySQL and Docker. I learn quickly, adapt quickly and I'm very rigorous with quality: clean code, maintainable and without unnecessary complications.",
+      "about-goal": "I seek to join a team where I can contribute real value, continue growing professionally and participate in projects that have impact and meaning.",
+      "about-skill-1": "Clean and maintainable code",
+      "about-skill-2": "Continuous learning",
+      "about-skill-3": "Problem solving",
+      "footer-about": "About Me",
       "video-1-title": "How to Install Bootstrap in Angular 19 in Minutes ✅",
       "video-1-date": "Published: May 12, 2025",
       "video-1-desc": "Learn how to integrate Bootstrap into Angular 19 without errors and with real tips for developers. Create clean and responsive interfaces in minutes.",
