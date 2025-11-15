@@ -1005,10 +1005,10 @@ window.copyEmail = function(email) {
     console.log(`[Translation] 📋 Traducciones disponibles:`, Object.keys(window.translations));
     console.log(`[Translation] 🔑 Claves en ${lang}:`, Object.keys(window.translations[lang]).slice(0, 5), '...');
     
-    // Update button active states
+    // Update button active states (móvil y desktop)
     window.langButtons.forEach(btn => {
-      const isActive = (lang === 'es' && btn.id === 'lang-es') || 
-                       (lang === 'en' && btn.id === 'lang-en');
+      const isActive = (lang === 'es' && (btn.id === 'lang-es' || btn.id === 'lang-es-desktop')) || 
+                       (lang === 'en' && (btn.id === 'lang-en' || btn.id === 'lang-en-desktop'));
       btn.classList.toggle('lang-active', isActive);
     });
 

@@ -232,6 +232,10 @@
   background: rgba(0, 212, 255, 0.1);
   border-radius: 8px !important;
   transition: all 0.3s ease;
+  padding: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-toggler-modern:hover {
@@ -240,32 +244,21 @@
 }
 
 .hamburger {
+  width: 24px;
+  height: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 25px;
-  height: 20px;
+  justify-content: space-between;
   cursor: pointer;
 }
 
 .hamburger span {
+  display: block;
   width: 100%;
-  height: 2px;
-  background: #00d4ff;
+  height: 2.5px;
+  background-color: #00d4ff;
   border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.navbar-toggler-modern:not(.collapsed) .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(10px, 10px);
-}
-
-.navbar-toggler-modern:not(.collapsed) .hamburger span:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar-toggler-modern:not(.collapsed) .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transition: all 0.3s ease;
 }
 
 /* Navbar blur effect */
@@ -328,6 +321,13 @@
 
   .brand-text {
     display: none;
+  }
+
+  /* Banderas centradas en móvil */
+  .lang-switch-mobile {
+    display: flex !important;
+    gap: 12px;
+    padding: 0.5rem 0;
   }
 }
 
@@ -460,11 +460,22 @@
 }
 
 /* Language switch styles */
+.lang-switch-navbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .lang-switch {
   display: flex;
   gap: 8px;
   align-items: center;
 }
+
+.lang-switch-mobile {
+  width: 100%;
+}
+
 .btn-lang {
   background: transparent;
   border: 2px solid rgba(255,255,255,0.15);
@@ -478,6 +489,7 @@
   transition: all 0.2s ease;
   cursor: pointer;
 }
+
 .flag-icon {
   width: 36px;
   height: 36px;
@@ -485,15 +497,30 @@
   border-radius: 50%;
   transition: transform 0.2s ease;
 }
+
 .btn-lang:hover {
   transform: scale(1.1);
   border-color: rgba(0,212,255,0.3);
   box-shadow: 0 0 15px rgba(0,212,255,0.15);
 }
+
 .btn-lang:hover .flag-icon {
   transform: scale(1.05);
 }
+
 .btn-lang.lang-active {
   border-color: #00d4ff;
   box-shadow: 0 0 20px rgba(0,212,255,0.3), inset 0 0 10px rgba(0,212,255,0.1);
+}
+
+/* Botón tema en navbar */
+.theme-btn-navbar {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
