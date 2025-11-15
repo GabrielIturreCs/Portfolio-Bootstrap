@@ -31,13 +31,22 @@ function applyTheme(theme) {
 function setupButtons() {
   console.log('👆 Setting up theme toggle buttons...');
   
-  // Botón en navbar
+  // Botón en navbar (móvil)
   const navBtn = document.getElementById('navbarThemeToggle');
   if (navBtn) {
     navBtn.addEventListener('click', toggleTheme);
-    console.log('✅ Navbar button listener attached');
+    console.log('✅ Navbar mobile button listener attached');
   } else {
-    console.warn('⚠️ Navbar button NOT found');
+    console.warn('⚠️ Navbar mobile button NOT found');
+  }
+
+  // Botón en navbar (desktop)
+  const navBtnDesktop = document.getElementById('navbarThemeToggleDesktop');
+  if (navBtnDesktop) {
+    navBtnDesktop.addEventListener('click', toggleTheme);
+    console.log('✅ Navbar desktop button listener attached');
+  } else {
+    console.warn('⚠️ Navbar desktop button NOT found');
   }
   
   // Botón flotante

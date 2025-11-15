@@ -77,8 +77,17 @@
           </div>
         </a>
         
+        <!-- Banderas y tema en navbar (DESKTOP ONLY) - IZQUIERDA -->
+        <div class="d-none d-lg-flex align-items-center lang-switch-navbar gap-2" role="group" aria-label="Language selection">
+          <button id="navbarThemeToggleDesktop" class="theme-btn-navbar" title="Cambiar tema">
+            <i class="fas fa-sun"></i>
+          </button>
+          <button class="btn-lang lang-active" onclick="translatePageTo('es')" title="Español" id="lang-es-desktop"><img src="images/icons8-circular-argentina-96.png" alt="Español" class="flag-icon"></button>
+          <button class="btn-lang" onclick="translatePageTo('en')" title="English" id="lang-en-desktop"><img src="images/icons8-circular-de-ee-uu-96.png" alt="English" class="flag-icon"></button>
+        </div>
+
         <!-- Botón de menú móvil mejorado -->
-        <button class="navbar-toggler navbar-toggler-modern border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-modern border-0 p-0 ms-auto d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <div class="hamburger">
             <span></span>
             <span></span>
@@ -86,15 +95,6 @@
           </div>
         </button>
 
-        <!-- Banderas en navbar (móvil y desktop) -->
-        <div class="d-flex align-items-center lang-switch-navbar ms-2 gap-2" role="group" aria-label="Language selection">
-          <button id="navbarThemeToggle" class="btn btn-outline-primary theme-btn-navbar" title="Cambiar tema">
-            <i class="fas fa-sun"></i>
-          </button>
-          <button class="btn btn-sm btn-lang lang-active" onclick="translatePageTo('es')" title="Español" id="lang-es"><img src="images/icons8-circular-argentina-96.png" alt="Español" class="flag-icon"></button>
-          <button class="btn btn-sm btn-lang" onclick="translatePageTo('en')" title="English" id="lang-en"><img src="images/icons8-circular-de-ee-uu-96.png" alt="English" class="flag-icon"></button>
-        </div>
-        
         <!-- Navegación mejorada -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <!-- Botón X para cerrar en móviles -->
@@ -102,7 +102,9 @@
             <i class="fas fa-times"></i>
           </button>
           
-          <ul class="navbar-nav ms-auto align-items-center">
+          
+          
+          <ul class="navbar-nav align-items-center navbar-nav-desktop">
             <li class="nav-item">
               <a class="nav-link nav-link-modern active" href="#hero" data-section="hero">
                 <span class="nav-text" data-i18n="nav-inicio">Inicio</span>
@@ -139,23 +141,14 @@
                 <span class="nav-indicator"></span>
               </a>
             </li>
-            <li class="nav-item ms-3">
-              <a href="#" id="cv-button" class="btn btn-primary btn-cv" title="Descargar CV">
-                <i class="fas fa-download me-2"></i>
-                <span>CV</span>
-              </a>
-            </li>
-            <!-- Banderas de idioma en desktop (derecha) -->
-            <li class="nav-item ms-2 d-none d-lg-block">
-              <div class="d-flex align-items-center gap-2">
-                <div class="d-flex align-items-center lang-switch" role="group" aria-label="Language selection">
-                  <button class="btn btn-sm btn-lang lang-active" onclick="translatePageTo('es')" title="Español" id="lang-es-desktop"><img src="images/icons8-circular-argentina-96.png" alt="Español" class="flag-icon"></button>
-                  <button class="btn btn-sm btn-lang" onclick="translatePageTo('en')" title="English" id="lang-en-desktop"><img src="images/icons8-circular-de-ee-uu-96.png" alt="English" class="flag-icon"></button>
-                </div>
-              </div>
-            </li>
           </ul>
         </div>
+
+        <!-- CV Button Desktop Only - DERECHA -->
+        <a href="#" id="cv-button" class="btn btn-cv d-none d-lg-block ms-auto" title="Descargar CV">
+          <i class="fas fa-download me-2"></i>
+          <span>CV</span>
+        </a>
       </div>
     </nav>
   </header>
@@ -595,7 +588,7 @@
               <a href="https://registrar-turno-sistema-clinico.onrender.com/" target="_blank" class="btn btn-outline-primary flex-fill">
                 <i class="fas fa-globe me-2"></i> <span data-i18n="odonto-demo">Ver Demo</span>
               </a>
-              <a href="#" target="_blank" class="btn btn-outline-secondary flex-fill">
+              <a href="https://github.com/GabrielIturreCs/Registrar-Turno-Sistema-Clinico" target="_blank" class="btn btn-outline-secondary flex-fill">
                 <i class="fab fa-github me-2"></i> <span data-i18n="odonto-code">Código</span>
               </a>
             </div>
@@ -781,7 +774,7 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="images/pasajes1.PNG" class="d-block w-100 project-img" alt="Sistema Venta de Pasajes">
+                    <img src="images/png.PNG" class="d-block w-100 project-img" alt="Sistema Venta de Pasajes">
                   </div>
                   <div class="carousel-item">
                     <img src="images/pasajes2.PNG" class="d-block w-100 project-img" alt="Sistema Venta de Pasajes">
@@ -846,10 +839,10 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="images/peluqueriapetitweb.PNG" class="d-block w-100 project-img" alt="Sitio Web Peluquería Petit">
+                    <img src="images/peluporta.PNG" class="d-block w-100 project-img" alt="Sitio Web Peluquería Petit">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/pelu2.PNG" class="d-block w-100 project-img" alt="Sitio Web Peluquería Petit">
+                    <img src="images/peluqueriapetitweb.PNG" class="d-block w-100 project-img" alt="Sitio Web Peluquería Petit">
                   </div>
                   <div class="carousel-item">
                     <img src="images/pelu3.PNG" class="d-block w-100 project-img" alt="Sitio Web Peluquería Petit">
@@ -911,7 +904,7 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="images/jujuy1.PNG" class="d-block w-100 project-img" alt="Portal de Empleos">
+                    <img src="images/ChatGPT Image 15 nov 2025, 00_58_05.png" class="d-block w-100 project-img" alt="Portal de Empleos">
                   </div>
                   <div class="carousel-item">
                     <img src="images/jujuy2.PNG" class="d-block w-100 project-img" alt="Portal de Empleos">
@@ -1088,7 +1081,7 @@
         <a href="https://registrar-turno-sistema-clinico.onrender.com/" target="_blank" class="btn btn-outline-primary flex-fill">
           <i class="fas fa-globe me-2"></i> <span data-i18n="odonto-demo">Ver Demo</span>
         </a>
-        <a href="#" target="_blank" class="btn btn-outline-secondary flex-fill">
+        <a href="https://github.com/GabrielIturreCs/Registrar-Turno-Sistema-Clinico" target="_blank" class="btn btn-outline-secondary flex-fill">
           <i class="fab fa-github me-2"></i> <span data-i18n="odonto-code">Código</span>
         </a>
       </div>
@@ -1630,8 +1623,8 @@
     </div>
   </footer>
 
-  <!-- Botón de scroll to top -->
-  <button class="scroll-top" id="scrollTopBtn">
+  <!-- Botón de scroll to top - IZQUIERDA -->
+  <button class="scroll-to-top-btn" id="scrollTopBtn" title="Ir al inicio">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -1848,8 +1841,9 @@
               <div class="project-gallery">
                 <div id="modalCarousel2" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner rounded-3 overflow-hidden">
+                    
                     <div class="carousel-item active">
-                      <img src="images/pasajes1.PNG" class="d-block w-100" alt="Sistema de Pasajes">
+                      <img src="images/png.PNG" class="d-block w-100" alt="Sistema de Pasajes">
                     </div>
                     <div class="carousel-item">
                       <img src="images/pasajes2.PNG" class="d-block w-100" alt="Sistema de Pasajes">
@@ -1994,7 +1988,7 @@
       </div>
       
       <div class="chatbot-messages" id="chatbotMessages">
-        <div class="message bot-message d-none d-md-flex">
+        <div class="message bot-message">
           <div class="message-content">
             <i class="fas fa-robot message-icon"></i>
             <div class="message-text" data-i18n="chatbot-initial-message">

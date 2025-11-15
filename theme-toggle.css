@@ -220,25 +220,25 @@ body.light-theme .theme-toggle-btn:hover {
 
 /* Navbar Theme Button */
 .theme-btn-navbar {
-  border-color: var(--accent-secondary) !important;
-  color: var(--accent-secondary) !important;
-  background: transparent !important;
-  transition: all 0.3s ease !important;
+  border: 2px solid rgba(0, 212, 255, 0.4);
+  color: #00d4ff;
+  background: transparent;
+  transition: all 0.3s ease;
 }
 
 body.light-theme .theme-btn-navbar {
-  border-color: #0d6efd !important;
-  color: #0d6efd !important;
+  border-color: rgba(13, 110, 253, 0.5);
+  color: #0d6efd;
 }
 
 .theme-btn-navbar:hover {
-  background: rgba(0, 212, 255, 0.15) !important;
+  background: rgba(0, 212, 255, 0.1);
   transform: rotate(20deg);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
 }
 
 body.light-theme .theme-btn-navbar:hover {
-  background: rgba(13, 110, 253, 0.1) !important;
+  background: rgba(13, 110, 253, 0.1);
   box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
 }
 
@@ -390,9 +390,7 @@ body.light-theme select {
 }
 
 /* Chatbot */
-.chatbot-container {
-  background: var(--bg-secondary);
-}
+
 
 body.light-theme .chatbot-container {
   background: #ffffff;
@@ -494,20 +492,6 @@ body.light-theme #particles-js {
 /* Smooth transition */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Botón de tema en navbar - Tema Claro */
-body.light-theme .theme-btn-navbar {
-  border-color: #0d6efd !important;
-  color: #0d6efd !important;
-  background: transparent !important;
-}
-
-body.light-theme .theme-btn-navbar:hover {
-  background: rgba(13, 110, 253, 0.1) !important;
-  border-color: #0d6efd !important;
-  color: #0d6efd !important;
-  box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
 }
 
 /* Educación y Certificaciones - Tema Claro */

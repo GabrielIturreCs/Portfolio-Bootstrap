@@ -1084,15 +1084,26 @@ window.copyEmail = function(email) {
   const chatbotSend = document.getElementById("chatbotSend");
   const chatbotInput = document.getElementById("chatbotInput");
   const chatbotMessages = document.getElementById("chatbotMessages");
+  
+  let isOpen = false; // Control de estado para evitar doble click
 
   if (chatbotButton) {
     // Abrir chat al hacer clic en el botón
     chatbotButton.addEventListener("click", (e) => {
       e.stopPropagation();
       if (chatbotWindow) {
-        chatbotWindow.style.display = chatbotWindow.style.display === "none" ? "flex" : "none";
-        if (chatbotTooltip) {
-          chatbotTooltip.style.display = "none";
+        isOpen = !isOpen;
+        if (isOpen) {
+          chatbotWindow.style.display = "flex";
+          if (chatbotTooltip) {
+            chatbotTooltip.style.display = "none";
+          }
+          // Enfocar el input al abrir
+          setTimeout(() => {
+            if (chatbotInput) chatbotInput.focus();
+          }, 100);
+        } else {
+          chatbotWindow.style.display = "none";
         }
       }
     });
@@ -1103,6 +1114,7 @@ window.copyEmail = function(email) {
     chatbotClose.addEventListener("click", () => {
       if (chatbotWindow) {
         chatbotWindow.style.display = "none";
+        isOpen = false;
       }
     });
   }
