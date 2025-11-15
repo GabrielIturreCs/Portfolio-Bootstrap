@@ -12520,6 +12520,13 @@ a:hover {
   margin-top: 1.5rem;
 }
 
+#misvideos h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.5rem;
+}
+
 #misvideos .d-flex.flex-wrap {
   gap: 1.5rem;
 }
@@ -12533,22 +12540,39 @@ a:hover {
 #misvideos .fa-check-circle {
   color: #00d4ff;
   flex-shrink: 0;
+  font-size: 1.1rem;
 }
 
-#misvideos .ratio {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(13, 110, 253, 0.1) 100%);
-  border: 2px solid rgba(0, 212, 255, 0.2);
-  transition: all 0.3s ease;
+/* ========== VIDEO CONTAINER STYLES ========== */
+.video-container-about {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
-#misvideos .ratio:hover {
-  border-color: rgba(0, 212, 255, 0.5);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
-  transform: translateY(-5px);
+.video-container-about iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-#misvideos .ratio iframe {
-  border-radius: 0.5rem;
+.video-clean {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-clean:hover {
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.25);
+  border-color: rgba(0, 212, 255, 0.35);
+  transform: translateY(-8px);
 }
 
 @media (max-width: 991px) {
@@ -12559,6 +12583,10 @@ a:hover {
   
   #misvideos .fs-5 {
     font-size: 1.1rem !important;
+  }
+  
+  .video-container-about {
+    margin-top: 1.5rem;
   }
 }
 
@@ -12572,7 +12600,11 @@ a:hover {
     font-size: 1rem !important;
   }
   
-  #misvideos .ratio {
+  #misvideos h5 {
+    font-size: 1.1rem;
+  }
+  
+  .video-container-about {
     margin-top: 1.5rem;
   }
 }
